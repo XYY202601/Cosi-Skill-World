@@ -1,0 +1,40 @@
+id: new_product_adoption_barrier
+title: New Product Adoption Barrier
+difficulty: medium
+focus_subskills: [scientific_delivery, need_discovery]
+doctor_persona_id: conservative_prescriber
+constraints:
+  max_turns: 12
+success_criteria:
+  - links_data_to_patient_segment
+  - gains_micro_commitment_for_trial
+failure_patterns:
+  - asks_for_major_switch_too_early
+  - fails_to_link_data_to_specific_patient_use
+  - treats_caution_as_simple_resistance
+playbook:
+  learning_objective: Overcome adoption inertia by identifying a specific patient niche and seeking micro-commitments.
+  target_subskills: [scientific_delivery, need_discovery]
+  expected_flow:
+    - Doctor expresses satisfaction with their current treatment regimen.
+    - MR probes for "edge cases" or patient segments not fully served.
+    - MR presents data specific to that underserved segment.
+    - MR asks for a small "trial" (e.g., trying the product for the next 2 suitable patients).
+  key_discovery_questions:
+    - Are there any patients who experience [Side Effect] with your current treatment?
+    - How do you manage patients who don't reach their target levels?
+  acceptable_evidence_moves:
+    - "Trial Y specifically looked at patients who failed on first-line therapy."
+    - "Would you consider trying this for just your next patient who fits this profile?"
+  common_failure_patterns:
+    - Asking the doctor to switch their entire patient base immediately.
+    - Ignoring the doctor's success with current drugs.
+    - Failing to explain the specific benefit for the identified patient segment.
+  recovery_moves:
+    - Acknowledge the doctor's success and focus exclusively on the "unmet need" segment.
+  completion_signals:
+    - Doctor agrees to try the product for a specific, narrow patient type.
+  positive_example_moves:
+    - "I completely understand why you're happy with Drug A. Have you seen any patients who still struggle with nighttime symptoms though?"
+  negative_example_moves:
+    - "Drug A is outdated, our new product is the new gold standard."

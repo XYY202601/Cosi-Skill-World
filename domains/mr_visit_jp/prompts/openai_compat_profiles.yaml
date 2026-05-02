@@ -1,0 +1,19 @@
+default_profile: alpha_baseline_v1
+profiles:
+  alpha_baseline_v1:
+    description: Baseline Alpha prompt contract set for MR visit review artifacts.
+    experiment_flags: []
+    roles: {}
+
+  alpha_coach_concise_v1:
+    description: Canary profile that keeps coach feedback tighter and more behavior-specific.
+    experiment_flags:
+      - coach_concise_actions
+      - prompt_canary
+    roles:
+      coach:
+        version: 2
+        task_prompt_suffix: |
+          Keep each next action brief, behavior-specific, and easy to execute in the next run.
+        output_requirements_append:
+          - Keep each `next_actions` item under 14 words when possible.

@@ -1,0 +1,50 @@
+{
+  "name": "h3_good_formulary_discovery",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Before comparing options, could I confirm whether the main barrier is formulary tier, pathway, or patient cost?",
+      "director_events": []
+    },
+    {
+      "user_message": "Given that barrier, I can share one endpoint and one implementation step that fits your workflow.",
+      "director_events": []
+    },
+    {
+      "user_message": "If useful, I will leave a one-page pathway summary for your team.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 77,
+    "overall_score_max": 81,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "formulary_restriction_negotiation"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "formulary",
+      "barrier",
+      "practical"
+    ]
+  }
+}

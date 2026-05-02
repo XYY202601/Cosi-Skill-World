@@ -1,0 +1,27 @@
+subskills:
+  patient_reception:
+    name: "Patient Reception"
+    description: "Building rapport and establishing the initial context."
+  symptom_interview:
+    name: "Symptom Interview"
+    description: "Systematically gathering symptoms and medical history."
+  lifestyle_advice:
+    name: "Lifestyle Advice"
+    description: "Providing actionable advice on diet, exercise, and habits."
+overall_score:
+  bands:
+    - id: excellent
+      min: 90
+      max: 100
+    - id: strong
+      min: 75
+      max: 89
+    - id: functional
+      min: 60
+      max: 74
+    - id: emerging
+      min: 40
+      max: 59
+    - id: critical_gap
+      min: 0
+      max: 39

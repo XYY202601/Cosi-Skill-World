@@ -1,0 +1,46 @@
+{
+  "name": "h3_bad_competitor_overclaim",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Our drug is definitely superior to every competitor in all settings.",
+      "director_events": []
+    },
+    {
+      "user_message": "There is no need to discuss your criteria because our data wins anyway.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 66,
+    "overall_score_max": 70,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [
+      "fair_balance_omission"
+    ],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "skeptical_doctor_competitor_pressure"
+    ],
+    "compliance_case": "overclaim_and_competitor",
+    "tags": [
+      "h3",
+      "bad",
+      "competitor",
+      "overclaim"
+    ]
+  }
+}

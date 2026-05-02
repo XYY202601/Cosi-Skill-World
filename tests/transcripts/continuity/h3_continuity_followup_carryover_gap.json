@@ -1,0 +1,59 @@
+{
+  "name": "h3_continuity_followup_carryover_gap",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "closing_followup",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Thanks. I will send something later.",
+      "director_events": [
+        "carryover_followup_gap"
+      ]
+    },
+    {
+      "user_message": "No explicit owner or date proposed.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 72,
+    "overall_score_max": 76,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "continuity",
+      "carryover",
+      "followup_gap"
+    ]
+  },
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "closing_followup"
+    ],
+    "suggested_focus_subskills": [
+      "closing_followup",
+      "objection_handling"
+    ],
+    "next_actions": [
+      "State one micro-commitment and concrete follow-up timing.",
+      "Answer objections with one evidence point."
+    ]
+  }
+}

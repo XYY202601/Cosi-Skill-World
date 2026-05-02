@@ -1,0 +1,46 @@
+{
+  "name": "h3_medium_formulary_partial_pathway",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Is the current barrier more about pathway approvals than efficacy itself?",
+      "director_events": []
+    },
+    {
+      "user_message": "If so, I can align one practical next step with your existing workflow.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 72,
+    "overall_score_max": 76,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "formulary_restriction_negotiation"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "medium",
+      "formulary",
+      "pathway",
+      "partial"
+    ]
+  }
+}

@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeHumanReviewFeedbackRecordResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["record"],
+  "properties": {
+    "record": { "$ref": "#/$defs/humanReviewRecord" }
+  },
+  "$defs": {
+    "humanReviewRecord": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "schema_version",
+        "domain_id",
+        "record_id",
+        "version",
+        "session_id",
+        "scenario_id",
+        "learner_id",
+        "review_snapshot",
+        "reviewer",
+        "verdict",
+        "corrections",
+        "fixture_promotion",
+        "created_at"
+      ],
+      "properties": {
+        "schema_version": { "type": "integer", "minimum": 1 },
+        "domain_id": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "integer", "minimum": 1 },
+        "supersedes_version": { "type": ["integer", "null"], "minimum": 1 },
+        "session_id": { "type": "string", "minLength": 1 },
+        "scenario_id": { "type": "string", "minLength": 1 },
+        "learner_id": { "type": "string", "minLength": 1 },
+        "review_snapshot": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "updated_at",
+            "prompt_profile",
+            "overall_score",
+            "overall_band",
+            "review_hash"
+          ],
+          "properties": {
+            "updated_at": { "type": "string", "minLength": 1 },
+            "prompt_profile": { "type": "string" },
+            "overall_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+            "overall_band": { "type": "string", "minLength": 1 },
+            "review_hash": { "type": "string", "minLength": 16 }
+          }
+        },
+        "reviewer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reviewer_id", "reviewer_role"],
+          "properties": {
+            "reviewer_id": { "type": "string", "minLength": 1 },
+            "reviewer_role": { "type": "string", "minLength": 1 }
+          }
+        },
+        "verdict": { "type": "string", "minLength": 1 },
+        "corrections": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "subskill_score_overrides",
+            "diagnosis_add_ids",
+            "diagnosis_remove_ids",
+            "compliance_severity_overrides",
+            "evidence_sufficiency",
+            "sme_comment"
+          ],
+          "properties": {
+            "subskill_score_overrides": {
+              "type": "object",
+              "additionalProperties": { "type": "integer", "minimum": 0, "maximum": 5 }
+            },
+            "diagnosis_add_ids": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "diagnosis_remove_ids": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "compliance_severity_overrides": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "required": ["rule_id", "severity"],
+                "properties": {
+                  "rule_id": { "type": "string", "minLength": 1 },
+                  "severity": { "type": "string", "minLength": 1 },
+                  "rationale": { "type": "string", "minLength": 1 }
+                }
+              }
+            },
+            "evidence_sufficiency": {
+              "type": "object",
+              "additionalProperties": { "type": "boolean" }
+            },
+            "sme_comment": { "type": ["string", "null"] }
+          }
+        },
+        "fixture_promotion": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": [
+            "include",
+            "bucket",
+            "name_hint",
+            "scenario_ids",
+            "focus_subskills",
+            "compliance_case",
+            "finish_reason",
+            "tags"
+          ],
+          "properties": {
+            "include": { "type": "boolean" },
+            "bucket": { "type": ["string", "null"] },
+            "name_hint": { "type": ["string", "null"] },
+            "scenario_ids": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "focus_subskills": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "compliance_case": { "type": "string", "minLength": 1 },
+            "finish_reason": { "type": ["string", "null"] },
+            "tags": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        },
+        "created_at": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

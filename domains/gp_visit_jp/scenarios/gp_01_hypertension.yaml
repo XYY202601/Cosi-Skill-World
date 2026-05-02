@@ -1,0 +1,26 @@
+id: gp_01_hypertension
+title: "Lifestyle Counseling: Newly Diagnosed Hypertension"
+difficulty: medium
+focus_subskills:
+  - symptom_interview
+  - lifestyle_advice
+doctor_persona_id: dr_sato_busy
+max_turns: 8
+success_criteria:
+  - acknowledges_patient_anxiety
+  - explains_sodium_restriction_clearly
+  - asks_about_daily_walking_habit
+failure_patterns:
+  - dismisses_lifestyle_concerns
+  - focuses_only_on_medication
+  - uses_overly_technical_jargon
+playbook:
+  expected_flow:
+    - stage: opening
+      objective: "Build rapport and acknowledge the recent diagnosis."
+    - stage: discovery
+      objective: "Understand the patient's current diet and activity levels."
+    - stage: education
+      objective: "Explain the link between lifestyle and blood pressure."
+    - stage: commitment
+      objective: "Agree on one small, sustainable change."

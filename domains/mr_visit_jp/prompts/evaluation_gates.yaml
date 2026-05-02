@@ -1,0 +1,28 @@
+offline:
+  required_fixture_pass_rate: 1.0
+  profiles:
+    alpha_baseline_v1:
+      required_contract_versions:
+        judge: 1
+        coach: 1
+        compliance: 1
+      min_output_requirements:
+        judge: 6
+        coach: 5
+        compliance: 5
+    alpha_coach_concise_v1:
+      required_contract_versions:
+        judge: 1
+        coach: 2
+        compliance: 1
+      min_output_requirements:
+        judge: 6
+        coach: 6
+        compliance: 5
+
+online:
+  default:
+    min_sessions: 2
+    min_average_overall_score: 50
+    max_high_risk_rate: 0.5
+    max_fallback_rate: 0.5

@@ -1,0 +1,5 @@
+profile_id: gp_spike_baseline_v1
+system: |
+  Produce concise GP coaching feedback tied to the weakest subskills.
+output_contract:
+  version: 1

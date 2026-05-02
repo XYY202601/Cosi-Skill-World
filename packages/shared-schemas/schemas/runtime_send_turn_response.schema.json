@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeSendTurnResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["session_id", "status", "turn_index", "doctor_reply", "director"],
+  "properties": {
+    "session_id": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["initialized", "running", "awaiting_finish", "finalized"]
+    },
+    "turn_index": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "doctor_reply": {
+      "type": "string",
+      "minLength": 1
+    },
+    "persona_id": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "director": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase", "events", "should_finish", "recommended_action"],
+      "properties": {
+        "phase": { "type": "string", "minLength": 1 },
+        "events": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "should_finish": { "type": "boolean" },
+        "recommended_action": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

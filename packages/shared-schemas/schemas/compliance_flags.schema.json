@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "ComplianceFlags",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": [
+      "rule_id",
+      "tag",
+      "severity",
+      "summary",
+      "related_diagnosis_types",
+      "evidence",
+      "required_handling",
+      "remedial_priority"
+    ],
+    "properties": {
+      "rule_id": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9_]*$"
+      },
+      "tag": {
+        "type": "string",
+        "minLength": 1
+      },
+      "severity": {
+        "type": "string",
+        "enum": ["low", "medium", "high", "critical", "positive"]
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 480
+      },
+      "related_diagnosis_types": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uniqueItems": true
+      },
+      "evidence": {
+        "type": "array",
+        "items": {
+          "oneOf": [
+            { "type": "string" },
+            {
+              "type": "object",
+              "required": ["summary", "turn_index"],
+              "properties": {
+                "summary": { "type": "string" },
+                "turn_index": { "type": "integer" },
+                "speaker": { "type": "string", "enum": ["learner", "doctor", "system"] },
+                "excerpt": { "type": "string" },
+                "tags": { "type": "array", "items": { "type": "string" } }
+              }
+            }
+          ]
+        }
+      },
+      "required_handling": {
+        "type": "string"
+      },
+      "remedial_priority": {
+        "type": "integer",
+        "minimum": 0,
+        "maximum": 100
+      }
+    },
+    "additionalProperties": false
+  }
+}

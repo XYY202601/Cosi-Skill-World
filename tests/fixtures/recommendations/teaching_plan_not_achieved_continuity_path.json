@@ -1,0 +1,175 @@
+{
+  "current_scenario_id": "busy_doctor_short_visit",
+  "current_scenario_difficulty": "easy",
+  "review": {
+    "overall_score": 63,
+    "priority_subskills": [
+      "opening"
+    ],
+    "diagnosis": {
+      "primary": [
+        {
+          "id": "opening_gap",
+          "summary": "The learner still opened without a tight permission-based frame.",
+          "recommendation_focus": [
+            "opening"
+          ],
+          "related_subskills": [
+            "opening"
+          ]
+        }
+      ]
+    },
+    "compliance_flags": [],
+    "subskills": {
+      "opening": {
+        "score": 2
+      },
+      "profiling": {
+        "score": 3
+      },
+      "need_discovery": {
+        "score": 3
+      },
+      "scientific_delivery": {
+        "score": 3
+      },
+      "objection_handling": {
+        "score": 3
+      },
+      "closing_followup": {
+        "score": 3
+      }
+    },
+    "continuity_channel": {
+      "carryover_subskills": [
+        "opening"
+      ],
+      "teaching_plan_achievement": {
+        "status": "not_achieved",
+        "achieved_count": 0,
+        "total_count": 1,
+        "threshold": 4.0
+      }
+    }
+  },
+  "recent_history": [
+    {
+      "session_id": "sess_teaching_plan_not_001",
+      "scenario_id": "busy_doctor_short_visit",
+      "weak_subskills": [
+        "opening"
+      ],
+      "teaching_plan_achievement": {
+        "status": "not_achieved",
+        "achieved_count": 0,
+        "total_count": 1,
+        "threshold": 4.0
+      },
+      "timestamp": "2026-04-23T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_teaching_plan_not_002",
+      "scenario_id": "low_interest_doctor_intro_fail",
+      "weak_subskills": [
+        "opening",
+        "need_discovery"
+      ],
+      "timestamp": "2026-04-24T00:00:00+00:00"
+    }
+  ],
+  "subskill_trends": {
+    "opening": "declining",
+    "profiling": "stable",
+    "need_discovery": "stable",
+    "scientific_delivery": "stable",
+    "objection_handling": "stable",
+    "closing_followup": "stable"
+  },
+  "fallback_subskills": [
+    "opening",
+    "need_discovery"
+  ],
+  "frozen_teaching_plan": {
+    "focus_subskills": [
+      "opening"
+    ],
+    "reason": "Keep the learner on permission-based openings.",
+    "target_behavior": "Ask permission and state purpose in one concise opening.",
+    "success_criterion": "Reach 4.0+ in opening with no overlong opener.",
+    "score_threshold": 4.0
+  },
+  "subskill_signals": {
+    "opening": {
+      "trend": "declining",
+      "rolling_average": 2.0,
+      "history_count": 3,
+      "last_score": 2
+    },
+    "profiling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "need_discovery": {
+      "trend": "stable",
+      "rolling_average": 2.67,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "scientific_delivery": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "objection_handling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "closing_followup": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    }
+  },
+  "expected": {
+    "dominant_cluster": {
+      "subskills": [
+        "need_discovery",
+        "opening"
+      ],
+      "occurrences": 1
+    },
+    "recommendation_ids": [
+      "revisit_after_prior_rejection",
+      "low_interest_doctor_intro_fail",
+      "new_product_adoption_barrier"
+    ],
+    "top_target_subskills": [
+      "opening",
+      "need_discovery"
+    ],
+    "top_difficulty": "medium",
+    "top_reason_fragments": [
+      "carryover weakness",
+      "recurring need_discovery, opening pattern",
+      "permission-based frame"
+    ],
+    "top_evidence_fragments": [
+      "frozen teaching-plan target",
+      "not achieved"
+    ],
+    "top_stop_condition_fragments": [
+      "opening reaches 4.0+",
+      "frozen teaching-plan target is marked achieved"
+    ],
+    "top_reason_category": "mixed",
+    "top_recommendation_type": "continuity",
+    "top_suggested_repetition_count": 2
+  }
+}

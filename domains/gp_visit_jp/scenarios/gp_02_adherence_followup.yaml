@@ -1,0 +1,27 @@
+id: gp_02_adherence_followup
+title: "Follow-up Visit: Medication Adherence Barrier"
+difficulty: medium
+focus_subskills:
+  - patient_reception
+  - symptom_interview
+  - lifestyle_advice
+doctor_persona_id: dr_tanaka_supportive
+max_turns: 8
+success_criteria:
+  - acknowledges_nonjudgmentally
+  - asks_what_makes_daily_adherence_hard
+  - agrees_on_one_practical_reminder_or_routine_change
+failure_patterns:
+  - blames_patient_for_nonadherence
+  - gives_generic_advice_without_exploring_barrier
+  - ignores_the_patient_daily_routine
+playbook:
+  expected_flow:
+    - stage: opening
+      objective: "Normalize the difficulty of taking medication consistently and keep the tone supportive."
+    - stage: discovery
+      objective: "Clarify the real-world barrier: schedule, side effects, cost, or motivation."
+    - stage: education
+      objective: "Link adherence to blood-pressure control in plain language."
+    - stage: commitment
+      objective: "Agree on one realistic reminder or habit anchor."

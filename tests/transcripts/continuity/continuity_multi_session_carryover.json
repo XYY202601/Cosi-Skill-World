@@ -1,0 +1,109 @@
+{
+  "name": "continuity_multi_session_carryover",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "Thank you for seeing me again. Per our last discussion, I will focus on a concise opening and ask a targeted question today.",
+      "director_events": []
+    },
+    {
+      "user_message": "Can you share the most common patient profile you treat for this condition?",
+      "director_events": []
+    },
+    {
+      "user_message": "Based on that profile, here is the relevant data from the Phase III trial. The hazard ratio was 0.75, with a balanced risk profile and appropriate limitations for this population.",
+      "director_events": []
+    },
+    {
+      "user_message": "I will send a follow-up with the paper and set a next discussion for next week.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 80,
+    "overall_score_max": 100,
+    "overall_band_one_of": [
+      "strong",
+      "excellent"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [
+      "opening_not_permission_based",
+      "weak_close_or_followup"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_subskill_score_min": {
+      "opening": 3
+    },
+    "training_quality": {
+      "evidence_per_subskill_min": 1,
+      "require_turn_references": true,
+      "diagnosis_count_min": 0,
+      "diagnosis_count_max": 3,
+      "compliance_detection": "none",
+      "coaching_action_count_min": 2,
+      "continuity_channel_present": true
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "continuity",
+      "carryover",
+      "multi_session",
+      "improvement"
+    ]
+  },
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "opening",
+      "need_discovery"
+    ],
+    "suggested_focus_subskills": [
+      "opening",
+      "need_discovery",
+      "scientific_delivery"
+    ],
+    "next_actions": [
+      "Open with permission and a concise relevance statement in the first turn.",
+      "Ask one targeted context question before delivering product detail."
+    ],
+    "teaching_plan": {
+      "version": 1,
+      "focus_subskills": ["opening", "need_discovery"],
+      "reason": "Previous teaching-plan target was not achieved and should stay active in the next run.",
+      "target_behavior": "Open with permission and one concise relevance statement before expanding.",
+      "success_criterion": "Achieve a score of 4.0 or higher in opening, need_discovery",
+      "score_threshold": 4.0,
+      "prior_evidence": [
+        {
+          "summary": "Opening lacked permission and relevance framing in prior session.",
+          "turn_index": 1,
+          "scenario_id": "busy_doctor_short_visit",
+          "scenario_title": "Busy Doctor Short Visit"
+        }
+      ]
+    },
+    "teaching_plan_snapshot": {
+      "snapshot_id": "tp_sess_carryover_001",
+      "plan_version": 1,
+      "frozen_at": "2026-05-01T10:00:00Z",
+      "source_session_id": "sess_carryover_001",
+      "source_scenario_id": "busy_doctor_short_visit",
+      "source_scenario_title": "Busy Doctor Short Visit"
+    }
+  }
+}

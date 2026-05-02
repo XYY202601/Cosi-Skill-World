@@ -1,0 +1,67 @@
+{
+  "name": "unresolved_objection_evidence_gap",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "I understand your concern about switching stable patients.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "The study exists, but I am not answering that concern directly.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "I hear the objection and still keep repeating the same evidence summary without resolving it.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "Another study is available, but I still will not address the hesitation directly.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    }
+  ],
+  "expected": {
+    "overall_score_min": 65,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "objection_response_gap",
+      "unclear_scientific_delivery"
+    ],
+    "required_subskill_score_max": {
+      "scientific_delivery": 2,
+      "objection_handling": 2
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "formulary_restriction_negotiation",
+      "skeptical_doctor_competitor_pressure"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "objection_handling",
+      "switch_barrier",
+      "evidence_gap"
+    ]
+  }
+}

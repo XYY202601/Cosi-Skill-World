@@ -1,0 +1,46 @@
+{
+  "name": "bad_low_information_visit",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "This is good for everyone, trust me.",
+      "director_events": [
+        "opening_overlong",
+        "low_information_turn",
+        "evidence_not_addressed"
+      ]
+    }
+  ],
+  "expected": {
+    "overall_score_min": 0,
+    "overall_score_max": 45,
+    "overall_band_one_of": [
+      "critical_gap",
+      "emerging"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [],
+    "required_diagnosis_ids": [
+      "weak_close_or_followup",
+      "objection_response_gap",
+      "insufficient_need_discovery"
+    ]
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "low_information",
+      "opening_gap",
+      "evidence_gap"
+    ]
+  }
+}

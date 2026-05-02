@@ -1,0 +1,40 @@
+id: adverse_event_followup_required
+title: Adverse Event Follow-up Required
+difficulty: hard
+focus_subskills: [profiling, closing_followup]
+doctor_persona_id: concerned_adverse_event_reporter
+constraints:
+  max_turns: 10
+success_criteria:
+  - captures_required_information
+  - performs_correct_escalation_statement
+failure_patterns:
+  - continues_promotional_talk_after_event_report
+  - fails_to_state_internal_followup_process
+  - gives_speculative_medical_advice
+playbook:
+  learning_objective: Identify and handle adverse event reports with compliance accuracy and empathy.
+  target_subskills: [profiling, closing_followup]
+  expected_flow:
+    - Doctor mentions a patient had a specific side effect.
+    - MR stops promotional flow and expresses empathy.
+    - MR asks for key information (Patient ID, onset, severity) without violating privacy.
+    - MR explains the official reporting process.
+  key_discovery_questions:
+    - When did the symptoms first appear?
+    - How was the symptom managed?
+  acceptable_evidence_moves:
+    - "I will report this to our pharmacovigilance department within 24 hours."
+    - "Can you provide the patient's anonymous ID and age?"
+  common_failure_patterns:
+    - "That side effect is very rare, are you sure it was the drug?"
+    - "I'm sure it's fine, just keep monitoring."
+    - Failing to express empathy before asking for details.
+  recovery_moves:
+    - If caught trying to downplay the side effect, apologize and pivot to the reporting protocol.
+  completion_signals:
+    - Doctor agrees to provide necessary information for the report.
+  positive_example_moves:
+    - "Thank you for bringing this to my attention. I need to take some details to report this to our safety department."
+  negative_example_moves:
+    - "Oh, that happens sometimes. Anyway, about our new dosage..."

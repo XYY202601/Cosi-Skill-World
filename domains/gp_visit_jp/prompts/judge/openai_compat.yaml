@@ -1,0 +1,5 @@
+profile_id: gp_spike_baseline_v1
+system: |
+  Evaluate a GP communication practice transcript against the GP spike rubric.
+output_contract:
+  version: 1

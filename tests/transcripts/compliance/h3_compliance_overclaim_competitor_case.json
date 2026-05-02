@@ -1,0 +1,47 @@
+{
+  "name": "h3_compliance_overclaim_competitor_case",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Our brand guarantees better outcomes than all competitors in every patient type.",
+      "director_events": []
+    },
+    {
+      "user_message": "There is no safety tradeoff to mention.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 68,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [
+      "unsupported_outcome_promise"
+    ],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "skeptical_doctor_competitor_pressure",
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "overclaim_and_competitor",
+    "tags": [
+      "h3",
+      "compliance",
+      "overclaim",
+      "competitor"
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeSessionStartResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "scenario_id",
+    "learner_id",
+    "status",
+    "scenario",
+    "coach_continuity",
+    "experiment_context"
+  ],
+  "properties": {
+    "session_id": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "learner_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "scenario": {
+      "$ref": "#/$defs/scenarioSummary"
+    },
+    "coach_continuity": {
+      "$ref": "#/$defs/coachContinuity"
+    },
+    "experiment_context": {
+      "$ref": "#/$defs/promptContextSummary"
+    }
+  },
+  "$defs": {
+    "scenarioSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "difficulty",
+        "focus_subskills",
+        "doctor_persona_id",
+        "persona_label",
+        "persona_attitude",
+        "persona_time_pressure",
+        "persona_specialty",
+        "max_turns",
+        "success_criteria",
+        "failure_patterns"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "doctor_persona_id": { "type": "string", "minLength": 1 },
+        "persona_label": { "type": "string", "minLength": 1 },
+        "persona_attitude": { "type": "string", "minLength": 1 },
+        "persona_time_pressure": { "type": "string", "minLength": 1 },
+        "persona_specialty": { "type": "string", "minLength": 1 },
+        "max_turns": { "type": "integer", "minimum": 1 },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "failure_patterns": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "coachContinuity": {
+      "type": "object",
+      "required": ["summary"],
+      "properties": {
+        "summary": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 },
+        "carryover_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "scenario_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "suggested_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "next_actions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "teaching_plan": {
+          "type": ["object", "null"],
+          "required": [
+            "version",
+            "focus_subskills",
+            "reason",
+            "target_behavior",
+            "success_criterion",
+            "score_threshold"
+          ],
+          "properties": {
+            "version": { "type": "integer", "minimum": 1 },
+            "focus_subskills": { "type": "array", "items": { "type": "string" } },
+            "reason": { "type": "string" },
+            "target_behavior": { "type": "string" },
+            "success_criterion": { "type": "string" },
+            "score_threshold": { "type": "number" },
+            "prior_evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "summary": { "type": "string", "minLength": 1 },
+                  "subskill_id": { "type": ["string", "null"] },
+                  "turn_index": { "type": ["integer", "null"], "minimum": 1 },
+                  "session_id": { "type": ["string", "null"] },
+                  "scenario_id": { "type": ["string", "null"] },
+                  "scenario_title": { "type": ["string", "null"] }
+                },
+                "required": ["summary"]
+              }
+            }
+          }
+        },
+        "teaching_plan_snapshot": {
+          "type": ["object", "null"],
+          "required": ["snapshot_id", "plan_version", "frozen_at"],
+          "properties": {
+            "snapshot_id": { "type": "string", "minLength": 1 },
+            "plan_version": { "type": "integer", "minimum": 1 },
+            "frozen_at": { "type": "string", "minLength": 1 },
+            "source_updated_at": { "type": ["string", "null"] },
+            "source_session_id": { "type": ["string", "null"] },
+            "source_scenario_id": { "type": ["string", "null"] },
+            "source_scenario_title": { "type": ["string", "null"] }
+          }
+        },
+        "recent_personas": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "last_diagnosis_summaries": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "persona": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "failure_patterns": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": true
+    },
+    "promptContextSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "flags", "contracts"],
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "experiment_id": {
+          "type": ["string", "null"]
+        },
+        "flags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "contracts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["version"],
+            "properties": {
+              "version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

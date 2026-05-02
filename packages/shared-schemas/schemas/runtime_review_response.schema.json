@@ -1,0 +1,435 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeReviewResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "scenario_id",
+    "learner_id",
+    "status",
+    "finish_reason",
+    "turn_count",
+    "started_at",
+    "updated_at",
+    "scenario",
+    "review",
+    "coach_continuity",
+    "experiment_context"
+  ],
+  "properties": {
+    "session_id": { "type": "string", "minLength": 1 },
+    "scenario_id": { "type": "string", "minLength": 1 },
+    "learner_id": { "type": "string", "minLength": 1 },
+    "status": { "type": "string", "minLength": 1 },
+    "finish_reason": { "type": "string", "minLength": 1 },
+    "turn_count": { "type": "integer", "minimum": 1 },
+    "started_at": { "type": "string", "minLength": 1 },
+    "updated_at": { "type": "string", "minLength": 1 },
+    "scenario": {
+      "$ref": "#/$defs/scenarioSummary"
+    },
+    "review": {
+      "$ref": "#/$defs/runtimeReview"
+    },
+    "coach_continuity": {
+      "$ref": "#/$defs/coachContinuity"
+    },
+    "coach_memory": {
+      "type": ["object", "null"]
+    },
+    "experiment_context": {
+      "$ref": "#/$defs/promptContextSummary"
+    }
+  },
+  "$defs": {
+    "scenarioSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "difficulty",
+        "focus_subskills",
+        "doctor_persona_id",
+        "persona_label",
+        "persona_attitude",
+        "persona_time_pressure",
+        "persona_specialty",
+        "max_turns",
+        "success_criteria",
+        "failure_patterns"
+      ],
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "title": { "type": "string", "minLength": 1 },
+        "difficulty": {
+          "type": "string",
+          "enum": ["easy", "medium", "hard"]
+        },
+        "focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "doctor_persona_id": { "type": "string", "minLength": 1 },
+        "persona_label": { "type": "string", "minLength": 1 },
+        "persona_attitude": { "type": "string", "minLength": 1 },
+        "persona_time_pressure": { "type": "string", "minLength": 1 },
+        "persona_specialty": { "type": "string", "minLength": 1 },
+        "max_turns": { "type": "integer", "minimum": 1 },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "failure_patterns": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "reviewEvidence": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["summary"],
+          "properties": {
+            "summary": { "type": "string", "minLength": 1 },
+            "turn_index": { "type": "integer", "minimum": 1 },
+            "speaker": { "type": "string", "minLength": 1 },
+            "excerpt": { "type": "string", "minLength": 1 },
+            "tags": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          }
+        }
+      ]
+    },
+    "runtimeReview": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "rubric_version",
+        "subskills",
+        "overall_score",
+        "overall_band",
+        "strengths",
+        "priority_subskills",
+        "diagnosis",
+        "coaching_feedback",
+        "compliance_flags",
+        "meta"
+      ],
+      "properties": {
+        "rubric_version": { "type": "integer", "minimum": 1 },
+        "subskills": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["score", "evidence"],
+            "properties": {
+              "score": { "type": "integer", "minimum": 0, "maximum": 5 },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "$ref": "#/$defs/reviewEvidence" }
+              }
+            }
+          }
+        },
+        "voice_signals": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["score", "evidence"],
+            "properties": {
+              "score": { "type": "integer", "minimum": 0, "maximum": 5 },
+              "evidence": {
+                "type": "array",
+                "minItems": 1,
+                "items": { "$ref": "#/$defs/reviewEvidence" }
+              }
+            }
+          }
+        },
+        "overall_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+        "overall_band": { "type": "string", "minLength": 1 },
+        "strengths": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "priority_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "diagnosis": {
+          "type": "object",
+          "required": ["primary", "selection_basis"],
+          "properties": {
+            "primary": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "kind",
+                  "severity",
+                  "summary",
+                  "related_subskills",
+                  "recommendation_focus"
+                ],
+                "properties": {
+                  "id": { "type": "string", "minLength": 1 },
+                  "kind": { "type": "string", "minLength": 1 },
+                  "severity": { "type": "string", "minLength": 1 },
+                  "summary": { "type": "string", "minLength": 1 },
+                  "related_subskills": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  },
+                  "recommendation_focus": {
+                    "type": "array",
+                    "items": { "type": "string", "minLength": 1 }
+                  }
+                }
+              }
+            },
+            "selection_basis": { "type": "string", "minLength": 1 }
+          },
+          "additionalProperties": false
+        },
+        "coaching_feedback": {
+          "type": "object",
+          "required": ["version", "focus_subskills", "next_actions"],
+          "properties": {
+            "version": { "type": "integer", "minimum": 1 },
+            "focus_subskills": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "next_actions": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            }
+          },
+          "additionalProperties": false
+        },
+        "compliance_flags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["rule_id", "tag", "severity", "summary", "related_diagnosis_types"],
+            "properties": {
+              "rule_id": { "type": "string", "minLength": 1 },
+              "tag": { "type": "string", "minLength": 1 },
+              "severity": { "type": "string", "minLength": 1 },
+              "summary": { "type": "string", "minLength": 1 },
+              "related_diagnosis_types": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 }
+              }
+            }
+          }
+        },
+        "meta": {
+          "type": "object",
+          "required": [
+            "finish_reason",
+            "turn_count",
+            "evaluation_mode",
+            "artifact_sources",
+            "fallback_reasons",
+            "model_meta",
+            "prompting",
+            "context"
+          ],
+          "properties": {
+            "finish_reason": { "type": "string", "minLength": 1 },
+            "turn_count": { "type": "integer", "minimum": 1 },
+            "evaluation_mode": { "type": "string", "minLength": 1 },
+            "artifact_sources": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["judge", "coach", "compliance"],
+              "properties": {
+                "judge": { "type": "string", "enum": ["rule", "model"] },
+                "coach": { "type": "string", "enum": ["rule", "model"] },
+                "compliance": { "type": "string", "enum": ["rule", "model"] }
+              }
+            },
+            "artifact_modes": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["judge", "coach", "compliance"],
+              "properties": {
+                "judge": { "type": "string", "enum": ["rule", "model", "mock"] },
+                "coach": { "type": "string", "enum": ["rule", "model", "mock"] },
+                "compliance": { "type": "string", "enum": ["rule", "model", "mock"] }
+              }
+            },
+            "fallback_reasons": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "model_meta": { "type": "object" },
+            "prompting": {
+              "$ref": "#/$defs/promptContextSummary"
+            },
+            "context": {
+              "type": "object",
+              "additionalProperties": true,
+              "required": [
+                "skill_id",
+                "session_id",
+                "learner_id",
+                "prompt_profile",
+                "trace_id",
+                "locale"
+              ],
+              "properties": {
+                "skill_id": { "type": "string", "minLength": 1 },
+                "session_id": { "type": "string", "minLength": 1 },
+                "learner_id": { "type": "string", "minLength": 1 },
+                "prompt_profile": { "type": "string", "minLength": 1 },
+                "trace_id": { "type": "string", "minLength": 1 },
+                "locale": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "additionalProperties": true
+        }
+      }
+    },
+    "coachContinuity": {
+      "type": "object",
+      "required": ["summary"],
+      "properties": {
+        "summary": { "type": "string" },
+        "version": { "type": "integer", "minimum": 1 },
+        "carryover_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "scenario_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "suggested_focus_subskills": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "next_actions": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "teaching_plan": {
+          "type": ["object", "null"],
+          "required": [
+            "version",
+            "focus_subskills",
+            "reason",
+            "target_behavior",
+            "success_criterion",
+            "score_threshold"
+          ],
+          "properties": {
+            "version": { "type": "integer", "minimum": 1 },
+            "focus_subskills": { "type": "array", "items": { "type": "string" } },
+            "reason": { "type": "string" },
+            "target_behavior": { "type": "string" },
+            "success_criterion": { "type": "string" },
+            "score_threshold": { "type": "number" },
+            "prior_evidence": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "summary": { "type": "string", "minLength": 1 },
+                  "subskill_id": { "type": ["string", "null"] },
+                  "turn_index": { "type": ["integer", "null"], "minimum": 1 },
+                  "session_id": { "type": ["string", "null"] },
+                  "scenario_id": { "type": ["string", "null"] },
+                  "scenario_title": { "type": ["string", "null"] }
+                },
+                "required": ["summary"]
+              }
+            }
+          }
+        },
+        "teaching_plan_snapshot": {
+          "type": ["object", "null"],
+          "required": ["snapshot_id", "plan_version", "frozen_at"],
+          "properties": {
+            "snapshot_id": { "type": "string", "minLength": 1 },
+            "plan_version": { "type": "integer", "minimum": 1 },
+            "frozen_at": { "type": "string", "minLength": 1 },
+            "source_updated_at": { "type": ["string", "null"] },
+            "source_session_id": { "type": ["string", "null"] },
+            "source_scenario_id": { "type": ["string", "null"] },
+            "source_scenario_title": { "type": ["string", "null"] }
+          }
+        },
+        "recent_personas": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "last_diagnosis_summaries": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "persona": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "success_criteria": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "failure_patterns": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        }
+      },
+      "additionalProperties": true
+    },
+    "promptContextSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "flags", "contracts"],
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "experiment_id": {
+          "type": ["string", "null"]
+        },
+        "flags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "contracts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["version"],
+            "properties": {
+              "version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

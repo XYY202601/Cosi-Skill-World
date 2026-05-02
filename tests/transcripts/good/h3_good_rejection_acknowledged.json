@@ -1,0 +1,50 @@
+{
+  "name": "h3_good_rejection_acknowledged",
+  "finish_reason": "learner_requested_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "profiling",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "上次您担心临床相关性不足，这次我只想确认两个现在可能变化的患者特征。",
+      "director_events": []
+    },
+    {
+      "user_message": "如果这些患者比例确实增加，我再用一个终点和一个安全性要点说明价值。",
+      "director_events": []
+    },
+    {
+      "user_message": "若不匹配，我们今天就到这里，不额外占用时间。",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 72,
+    "overall_score_max": 76,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "revisit_after_prior_rejection"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "revisit",
+      "acknowledge",
+      "new_relevance"
+    ]
+  }
+}

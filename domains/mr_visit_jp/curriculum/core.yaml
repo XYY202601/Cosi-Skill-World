@@ -1,0 +1,97 @@
+curriculum_id: mr_visit_jp_core_v1
+version: 1
+title: MR Visit JP Core Curriculum
+modules:
+  - id: foundation_attention_and_relevance
+    title: "Foundation: Attention And Relevance"
+    description: Build concise openings, recover weak starts, and earn permission to continue.
+    stages:
+      - id: foundation_concise_entry
+        title: Stage 1. Concise Entry And Relevance
+        description: Establish relevance fast in short visits and recover when interest is low.
+        scenario_ids:
+          - busy_doctor_short_visit
+          - low_interest_doctor_intro_fail
+        target_subskills:
+          - opening
+          - need_discovery
+          - scientific_delivery
+          - closing_followup
+        prerequisites: []
+        recommended_repetition: 2
+        completion_criteria:
+          required_scenario_ids:
+            - busy_doctor_short_visit
+            - low_interest_doctor_intro_fail
+          min_completed_sessions: 2
+          min_average_overall_score: 66
+          min_target_subskill_average: 3.0
+
+      - id: foundation_context_reentry
+        title: Stage 2. Re-entry And Niche Discovery
+        description: Reopen a prior rejection, find a real niche, and earn a small next commitment.
+        scenario_ids:
+          - revisit_after_prior_rejection
+          - new_product_adoption_barrier
+        target_subskills:
+          - opening
+          - profiling
+          - need_discovery
+          - scientific_delivery
+        prerequisites:
+          - foundation_concise_entry
+        recommended_repetition: 2
+        completion_criteria:
+          required_scenario_ids:
+            - revisit_after_prior_rejection
+            - new_product_adoption_barrier
+          min_completed_sessions: 2
+          min_average_overall_score: 70
+          min_target_subskill_average: 3.2
+
+  - id: evidence_and_objection_progression
+    title: Evidence And Objection Progression
+    description: Hold up under clinical scrutiny and reframe resistance without overclaiming.
+    stages:
+      - id: evidence_under_scrutiny
+        title: Stage 3. Evidence Under Scrutiny
+        description: Respond with precise evidence and surface the doctor's real decision criteria.
+        scenario_ids:
+          - cautious_doctor_evidence_check
+          - skeptical_doctor_competitor_pressure
+        target_subskills:
+          - profiling
+          - scientific_delivery
+          - objection_handling
+        prerequisites:
+          - foundation_context_reentry
+        recommended_repetition: 2
+        completion_criteria:
+          required_scenario_ids:
+            - cautious_doctor_evidence_check
+            - skeptical_doctor_competitor_pressure
+          min_completed_sessions: 2
+          min_average_overall_score: 74
+          min_target_subskill_average: 3.4
+
+      - id: systems_barriers_and_safe_closing
+        title: Stage 4. Systems Barriers And Safe Closing
+        description: Navigate institutional barriers and adverse-event follow-up with realistic, compliant next steps.
+        scenario_ids:
+          - formulary_restriction_negotiation
+          - adverse_event_followup_required
+        target_subskills:
+          - profiling
+          - scientific_delivery
+          - objection_handling
+          - closing_followup
+        prerequisites:
+          - evidence_under_scrutiny
+        recommended_repetition: 3
+        completion_criteria:
+          required_scenario_ids:
+            - formulary_restriction_negotiation
+            - adverse_event_followup_required
+          min_completed_sessions: 2
+          min_average_overall_score: 78
+          min_target_subskill_average: 3.6

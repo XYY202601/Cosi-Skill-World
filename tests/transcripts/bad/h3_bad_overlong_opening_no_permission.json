@@ -1,0 +1,47 @@
+{
+  "name": "h3_bad_overlong_opening_no_permission",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "I have many things to cover today and will explain all benefits across multiple populations before we discuss your priorities.",
+      "director_events": []
+    },
+    {
+      "user_message": "The market is changing rapidly and we should switch now.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 68,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [
+      "fair_balance_omission"
+    ],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "bad",
+      "opening",
+      "overlong",
+      "no_permission"
+    ]
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "h3_bad_evidence_dump_no_segment",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "We have many statistics, p values, and subgroup tables that all look positive without exception.",
+      "director_events": []
+    },
+    {
+      "user_message": "I cannot specify which patients this is for right now.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 68,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "bad",
+      "evidence_dump",
+      "no_segment"
+    ]
+  }
+}

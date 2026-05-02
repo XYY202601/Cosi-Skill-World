@@ -1,0 +1,22 @@
+{
+  "mr_visit_jp": {
+    "skill_id": "mr_visit_jp",
+    "org_id": "local",
+    "state": "installed",
+    "installed_version": "",
+    "installed_at": "2026-05-01T04:58:02.518267+00:00",
+    "installed_by": "platform_admin_demo",
+    "updated_at": "2026-05-01T04:58:02.518267+00:00",
+    "reason": ""
+  },
+  "gp_visit_jp": {
+    "skill_id": "gp_visit_jp",
+    "org_id": "local",
+    "state": "installed",
+    "installed_version": "",
+    "installed_at": "2026-05-01T10:20:13.886306+00:00",
+    "installed_by": "org_admin_demo",
+    "updated_at": "2026-05-01T10:20:13.886306+00:00",
+    "reason": ""
+  }
+}

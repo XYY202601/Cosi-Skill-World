@@ -1,0 +1,154 @@
+{
+  "current_scenario_id": "adverse_event_followup_required",
+  "current_scenario_difficulty": "hard",
+  "review": {
+    "overall_score": 42,
+    "priority_subskills": [
+      "closing_followup",
+      "scientific_delivery"
+    ],
+    "diagnosis": {
+      "primary": [
+        {
+          "id": "adverse_event_escalation_miss",
+          "summary": "Adverse event follow-up broke down after the report",
+          "recommendation_focus": [
+            "closing_followup"
+          ],
+          "related_subskills": [
+            "closing_followup"
+          ]
+        }
+      ]
+    },
+    "compliance_flags": [
+      {
+        "rule_id": "adverse_event_reporting_failure",
+        "severity": "critical"
+      }
+    ],
+    "subskills": {
+      "opening": {
+        "score": 3
+      },
+      "profiling": {
+        "score": 3
+      },
+      "need_discovery": {
+        "score": 3
+      },
+      "scientific_delivery": {
+        "score": 2
+      },
+      "objection_handling": {
+        "score": 3
+      },
+      "closing_followup": {
+        "score": 1
+      }
+    }
+  },
+  "recent_history": [
+    {
+      "session_id": "sess_risk_001",
+      "scenario_id": "busy_doctor_short_visit",
+      "weak_subskills": [
+        "closing_followup",
+        "scientific_delivery"
+      ],
+      "timestamp": "2026-04-19T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_risk_002",
+      "scenario_id": "new_product_adoption_barrier",
+      "weak_subskills": [
+        "closing_followup",
+        "scientific_delivery"
+      ],
+      "timestamp": "2026-04-20T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_risk_003",
+      "scenario_id": "adverse_event_followup_required",
+      "weak_subskills": [
+        "closing_followup",
+        "scientific_delivery"
+      ],
+      "timestamp": "2026-04-21T00:00:00+00:00"
+    }
+  ],
+  "subskill_trends": {
+    "opening": "stable",
+    "profiling": "stable",
+    "need_discovery": "stable",
+    "scientific_delivery": "stable",
+    "objection_handling": "stable",
+    "closing_followup": "stable"
+  },
+  "fallback_subskills": [
+    "closing_followup",
+    "scientific_delivery"
+  ],
+  "subskill_signals": {
+    "closing_followup": {
+      "trend": "stable",
+      "rolling_average": 1.7,
+      "history_count": 3,
+      "last_score": 1
+    },
+    "scientific_delivery": {
+      "trend": "stable",
+      "rolling_average": 2.5,
+      "history_count": 3,
+      "last_score": 2
+    },
+    "profiling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "opening": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "need_discovery": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "objection_handling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    }
+  },
+  "expected": {
+    "dominant_cluster": {
+      "subskills": [
+        "closing_followup",
+        "scientific_delivery"
+      ],
+      "occurrences": 3
+    },
+    "recommendation_ids": [
+      "busy_doctor_short_visit",
+      "cautious_doctor_evidence_check",
+      "new_product_adoption_barrier"
+    ],
+    "top_target_subskills": [
+      "scientific_delivery",
+      "closing_followup"
+    ],
+    "top_difficulty": "easy",
+    "top_reason_fragments": [
+      "recurring",
+      "adverse event follow-up broke down after the report",
+      "steps difficulty down"
+    ]
+  }
+}

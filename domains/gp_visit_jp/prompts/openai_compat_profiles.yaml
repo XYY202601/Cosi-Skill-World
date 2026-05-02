@@ -1,0 +1,15 @@
+default_profile_id: gp_spike_baseline_v1
+profiles:
+  - id: gp_spike_baseline_v1
+    label: "GP Spike Baseline v1"
+    description: "Deterministic GP spike profile reserved for the second-domain runtime contract."
+    contracts:
+      judge:
+        contract_id: gp_spike_baseline_v1:judge:v1
+        version: 1
+      coach:
+        contract_id: gp_spike_baseline_v1:coach:v1
+        version: 1
+      compliance:
+        contract_id: gp_spike_baseline_v1:compliance:v1
+        version: 1

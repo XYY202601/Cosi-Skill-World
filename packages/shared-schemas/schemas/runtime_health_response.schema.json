@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeHealthResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "status",
+    "domain_id",
+    "scenario_count",
+    "prompt_profile"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "minLength": 1
+    },
+    "domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "prompt_profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "experiment_id": {
+      "type": ["string", "null"]
+    },
+    "persistence_mode": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "demo_seed_mode": {
+      "type": ["string", "null"],
+      "minLength": 1
+    }
+  }
+}

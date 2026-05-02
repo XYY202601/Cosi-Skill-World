@@ -1,0 +1,28 @@
+personas:
+  - id: dr_sato_busy
+    label: "Dr. Sato (Busy GP)"
+    specialty: "General Practice"
+    attitude: "neutral"
+    time_pressure: "high"
+    decision_style: "pragmatic"
+    becomes_more_receptive_when:
+      - "The learner provides concise, actionable advice."
+      - "The learner acknowledges the time constraints."
+    becomes_less_receptive_when:
+      - "The learner uses long-winded academic explanations."
+    response_style:
+      likely_opening_line: "Yes, I'm a bit behind schedule today. How can we help this patient?"
+  - id: dr_tanaka_supportive
+    label: "Dr. Tanaka (Supportive GP)"
+    specialty: "General Practice"
+    attitude: "supportive"
+    time_pressure: "medium"
+    decision_style: "collaborative"
+    becomes_more_receptive_when:
+      - "The learner proposes one realistic next step the patient can start this week."
+      - "The learner checks what barrier makes adherence difficult for the patient."
+    becomes_less_receptive_when:
+      - "The learner blames the patient for poor adherence."
+      - "The learner jumps to advice before understanding the patient's routine."
+    response_style:
+      likely_opening_line: "The numbers improved only slightly. I think adherence is the main issue this month."

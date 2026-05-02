@@ -1,0 +1,46 @@
+{
+  "name": "h3_compliance_ae_correct_followup",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "I will document the adverse event details now and submit internal PV escalation immediately.",
+      "director_events": []
+    },
+    {
+      "user_message": "I will share the case reference number and follow up within 48 hours.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 70,
+    "overall_score_max": 74,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [
+      "correct_ae_handling"
+    ],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_correct",
+    "tags": [
+      "h3",
+      "compliance",
+      "adverse_event",
+      "correct"
+    ]
+  }
+}

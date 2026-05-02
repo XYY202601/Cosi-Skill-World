@@ -1,0 +1,128 @@
+version: 1
+domain: mr_visit_jp
+scoring_method:
+  id: weighted_subskill_v1
+  description: >
+    Seven subskills are scored on a discrete 0-5 scale. The weighted overall
+    score is calculated as round(sum(subskill_score * weight) / 5 * 100).
+scoring_assumptions:
+  - Score observable session behavior, not inferred intent.
+  - Missing evidence should score low instead of being generously inferred.
+  - Compliance is tagged separately and does not replace subskill scoring.
+  - Short visits still require an explicit opening, one relevant value message, and a clear next step.
+scale:
+  min: 0
+  max: 5
+  step: 1
+  meanings:
+    "0": harmful_or_missing
+    "1": major_gap
+    "2": inconsistent
+    "3": functional
+    "4": strong
+    "5": excellent
+overall_score:
+  min: 0
+  max: 100
+  rounding: nearest_integer
+  bands:
+    - id: critical_gap
+      min: 0
+      max: 39
+    - id: emerging
+      min: 40
+      max: 59
+    - id: functional
+      min: 60
+      max: 74
+    - id: strong
+      min: 75
+      max: 89
+    - id: excellent
+      min: 90
+      max: 100
+subskills:
+  preparation:
+    label: Preparation
+    weight: 0.10
+    description: Arrives with a relevant objective, doctor context, and compliant message plan.
+    strong_behaviors:
+      - Selects a clear visit objective tied to the scenario.
+      - Uses known doctor context before starting the message.
+      - Avoids unprepared claims or improvised positioning.
+    failure_modes:
+      - No clear visit goal.
+      - Uses generic talking points unrelated to doctor context.
+      - Enters the visit without a compliant evidence plan.
+  opening:
+    label: Opening
+    weight: 0.14
+    description: Opens with permission, relevance, and a concise value frame suited to limited time.
+    strong_behaviors:
+      - Acknowledges time pressure and earns permission to proceed.
+      - States purpose quickly and clearly.
+      - Positions the visit around one relevant value message.
+    failure_modes:
+      - Starts with a product dump.
+      - Fails to secure attention in the first turns.
+      - Uses a vague or self-centered opener.
+  profiling:
+    label: Profiling
+    weight: 0.14
+    description: Surfaces prescribing context, patient mix, and decision constraints before pushing messages.
+    strong_behaviors:
+      - Asks targeted questions about patient type or current practice.
+      - Identifies barriers such as formulary, evidence threshold, or workflow.
+      - Adapts the direction based on doctor feedback.
+    failure_modes:
+      - Asks no context questions.
+      - Uses generic probing with no decision value.
+      - Ignores information the doctor has already provided.
+  scientific_delivery:
+    label: Scientific Delivery
+    weight: 0.20
+    description: Delivers accurate, relevant, and balanced clinical information without overclaiming.
+    strong_behaviors:
+      - Explains evidence in a concise, decision-relevant way.
+      - Matches data claims to the doctor's context.
+      - Maintains precision and fair balance.
+    failure_modes:
+      - Uses weak or inaccurate evidence framing.
+      - Gives too much detail without relevance.
+      - Overstates efficacy, certainty, or indication scope.
+  need_discovery:
+    label: Need Discovery
+    weight: 0.18
+    description: Identifies unmet clinical or workflow needs that justify the value message.
+    strong_behaviors:
+      - Surfaces a concrete pain point or unmet need.
+      - Connects the doctor's context to the product message.
+      - Confirms the importance of the identified need.
+    failure_modes:
+      - Assumes need without discovery.
+      - Treats discovery as a checklist instead of a decision input.
+      - Misses the doctor's explicit concern.
+  objection_handling:
+    label: Objection Handling
+    weight: 0.14
+    description: Responds to skepticism with evidence, acknowledgment, and compliant reframing.
+    strong_behaviors:
+      - Acknowledges the concern before rebutting.
+      - Answers with relevant evidence or a compliant limitation statement.
+      - Keeps the conversation constructive and credible.
+    failure_modes:
+      - Becomes defensive or argumentative.
+      - Ignores the actual concern being raised.
+      - Reframes with unsupported claims or competitor attacks.
+  closing_followup:
+    label: Closing and Follow-up
+    weight: 0.10
+    description: Ends the visit with an appropriate next step, confirmation, and compliant follow-up path.
+    strong_behaviors:
+      - Summarizes the relevant takeaway briefly.
+      - Secures a realistic next step or follow-up commitment.
+      - Handles reporting or escalation steps correctly when required.
+    failure_modes:
+      - Ends without a next step.
+      - Pushes an unrealistic commitment.
+      - Misses required follow-up or escalation behavior.

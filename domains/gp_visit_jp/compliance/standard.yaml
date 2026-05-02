@@ -1,0 +1,17 @@
+rules:
+  - id: improper_medical_diagnosis
+    tag: "medical_authority_limit"
+    severity: "critical"
+    summary: "The learner provided a definitive diagnosis outside their authority."
+    related_diagnosis_types: ["authority_breach"]
+    required_response:
+      - "Always clarify that the doctor makes the final diagnosis."
+  - id: sensitive_data_breach
+    tag: "privacy_risk"
+    severity: "high"
+    summary: "The learner mentioned specific patient identifiers in an insecure manner."
+    required_response:
+      - "Follow HIPAA/GDPR privacy guidelines."
+review_policy:
+  include_top_flags_in_review: 3
+  blocks_excellent_band_on: ["critical", "high"]

@@ -1,0 +1,38 @@
+id: cautious_doctor_evidence_check
+title: Cautious Doctor Evidence Check
+difficulty: medium
+focus_subskills: [scientific_delivery, objection_handling]
+doctor_persona_id: evidence_first_specialist
+constraints:
+  max_turns: 12
+success_criteria:
+  - cites_clinical_evidence_correctly
+  - handles_uncertainty_without_overclaim
+failure_patterns:
+  - cites_data_vaguely_or_inaccurately
+  - overstates_certainty_under_pressure
+  - avoids_direct_evidence_challenge
+playbook:
+  learning_objective: Provide precise, evidence-backed answers and handle skepticism with transparency.
+  target_subskills: [scientific_delivery, objection_handling]
+  expected_flow:
+    - Specialist asks for specific trial data or p-values.
+    - MR provides precise citation or acknowledges limits of current data.
+    - Specialist challenges the relevance of the data to their patient profile.
+  key_discovery_questions:
+    - What specific endpoints are most important for your treatment decisions?
+  acceptable_evidence_moves:
+    - "According to the subgroup analysis of Trial Z..."
+    - "I don't have the p-value for that specific cohort, let me check with our medical affairs."
+  common_failure_patterns:
+    - Using "highly significant" without providing the actual number.
+    - Guessing data when the specialist probes deeply.
+    - Defensive reaction to legitimate skepticism about trial design.
+  recovery_moves:
+    - If caught in an inaccuracy, immediately correct it and offer to provide the formal paper.
+  completion_signals:
+    - Doctor acknowledges the data is sufficient to consider the product.
+  positive_example_moves:
+    - "In the Phase III trial, the hazard ratio was 0.75 with a 95% CI of 0.60-0.90."
+  negative_example_moves:
+    - "Most doctors find that this drug works much better than the competitor."

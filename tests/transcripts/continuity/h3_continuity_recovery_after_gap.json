@@ -1,0 +1,57 @@
+{
+  "name": "h3_continuity_recovery_after_gap",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "need_discovery",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Before I continue, which patient profile is currently hardest to manage?",
+      "director_events": []
+    },
+    {
+      "user_message": "Given that profile, can we schedule a short follow-up on Friday with one targeted data point?",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 81,
+    "overall_score_max": 85,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "continuity",
+      "recovery",
+      "actionable_close"
+    ]
+  },
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "need_discovery"
+    ],
+    "suggested_focus_subskills": [
+      "need_discovery",
+      "closing_followup"
+    ],
+    "next_actions": [
+      "Ask one contextual need question before any claim.",
+      "Land a specific next step."
+    ]
+  }
+}

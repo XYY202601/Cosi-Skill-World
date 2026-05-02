@@ -1,0 +1,47 @@
+{
+  "name": "h3_bad_adverse_event_dismissed",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "That adverse event is minor and can be ignored. Let's return to promotion points.",
+      "director_events": []
+    },
+    {
+      "user_message": "No need to escalate internally for now.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 66,
+    "overall_score_max": 70,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [
+      "correct_ae_handling"
+    ],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_failure",
+    "tags": [
+      "h3",
+      "bad",
+      "adverse_event",
+      "dismissed",
+      "unsafe"
+    ]
+  }
+}

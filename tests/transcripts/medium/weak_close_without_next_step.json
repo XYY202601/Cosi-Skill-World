@@ -1,0 +1,61 @@
+{
+  "name": "weak_close_without_next_step",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take one minute? What patient type is most challenging right now?",
+      "director_events": []
+    },
+    {
+      "user_message": "One study suggests a practical benefit with clear limitations for that group.",
+      "director_events": []
+    },
+    {
+      "user_message": "Thank you for your time today.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 82,
+    "overall_score_max": 90,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "weak_close_or_followup"
+    ],
+    "forbidden_diagnosis_ids": [
+      "opening_not_permission_based"
+    ],
+    "required_subskill_score_max": {
+      "closing_followup": 2
+    },
+    "required_subskill_score_min": {
+      "opening": 5,
+      "need_discovery": 5,
+      "scientific_delivery": 5
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "closing_gap",
+      "good_opening",
+      "followup_missing"
+    ]
+  }
+}

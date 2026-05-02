@@ -1,0 +1,39 @@
+id: skeptical_doctor_competitor_pressure
+title: Skeptical Doctor with Competitor Pressure
+difficulty: medium
+focus_subskills: [profiling, objection_handling]
+doctor_persona_id: competitor_loyal_specialist
+constraints:
+  max_turns: 12
+success_criteria:
+  - surfaces_decision_criteria
+  - reframes_without_negative_competitor_claim
+failure_patterns:
+  - attacks_competitor_without_support
+  - skips_decision_criteria_discovery
+  - argues_instead_of_reframing_constructively
+playbook:
+  learning_objective: Address competitor preference by identifying decision criteria and reframing without disparaging the competition.
+  target_subskills: [profiling, objection_handling]
+  expected_flow:
+    - Doctor expresses strong loyalty to a competitor product.
+    - MR probes for the reasons behind the preference (efficacy, safety, cost, etc.).
+    - MR acknowledges the competitor's strengths.
+    - MR reframes the discussion to a specific dimension where their product excels.
+  key_discovery_questions:
+    - What is the most important factor for you when choosing between these two therapies?
+  acceptable_evidence_moves:
+    - "Competitor A is indeed the market leader in [Area]. Our drug offers a different mechanism that might benefit patients who..."
+    - "I understand your loyalty to Product B. Many specialists are now looking at our new safety data for elderly patients."
+  common_failure_patterns:
+    - Disparaging the competitor product without evidence.
+    - Failing to ask why the doctor likes the competitor.
+    - Becoming defensive when the doctor compares products.
+  recovery_moves:
+    - If the doctor defends the competitor, pivot to "complementary use" or a "niche patient" strategy.
+  completion_signals:
+    - Doctor acknowledges a specific benefit of the MR's product compared to the competitor.
+  positive_example_moves:
+    - "Product B has a great track record. If I could show you where our drug might offer a faster onset of action, would that be interesting?"
+  negative_example_moves:
+    - "Product B is known to cause many side effects, you shouldn't be using it so much."

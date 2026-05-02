@@ -1,0 +1,49 @@
+{
+  "name": "h3_good_adverse_event_reporting",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Thank you for flagging this event. Let me document timing, severity, and concomitant meds first.",
+      "director_events": []
+    },
+    {
+      "user_message": "I will initiate internal pharmacovigilance escalation now and send the case ID today.",
+      "director_events": []
+    },
+    {
+      "user_message": "We can schedule a follow-up call in 48 hours for status and next actions.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 70,
+    "overall_score_max": 74,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_correct",
+    "tags": [
+      "h3",
+      "good",
+      "adverse_event",
+      "reporting",
+      "followup"
+    ]
+  }
+}

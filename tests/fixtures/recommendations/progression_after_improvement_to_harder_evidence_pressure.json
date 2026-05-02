@@ -1,0 +1,153 @@
+{
+  "current_scenario_id": "cautious_doctor_evidence_check",
+  "current_scenario_difficulty": "medium",
+  "review": {
+    "overall_score": 88,
+    "priority_subskills": [
+      "scientific_delivery",
+      "objection_handling"
+    ],
+    "diagnosis": {
+      "primary": [
+        {
+          "id": "synthetic_growth",
+          "summary": "The latest run handled evidence well and is ready for harder pressure",
+          "recommendation_focus": [
+            "scientific_delivery",
+            "objection_handling"
+          ],
+          "related_subskills": [
+            "scientific_delivery",
+            "objection_handling"
+          ]
+        }
+      ]
+    },
+    "compliance_flags": [],
+    "subskills": {
+      "opening": {
+        "score": 4
+      },
+      "profiling": {
+        "score": 4
+      },
+      "need_discovery": {
+        "score": 4
+      },
+      "scientific_delivery": {
+        "score": 4
+      },
+      "objection_handling": {
+        "score": 4
+      },
+      "closing_followup": {
+        "score": 4
+      }
+    }
+  },
+  "recent_history": [
+    {
+      "session_id": "sess_progress_001",
+      "scenario_id": "new_product_adoption_barrier",
+      "weak_subskills": [
+        "scientific_delivery",
+        "need_discovery"
+      ],
+      "timestamp": "2026-04-18T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_progress_002",
+      "scenario_id": "skeptical_doctor_competitor_pressure",
+      "weak_subskills": [
+        "scientific_delivery",
+        "objection_handling"
+      ],
+      "timestamp": "2026-04-19T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_progress_003",
+      "scenario_id": "cautious_doctor_evidence_check",
+      "weak_subskills": [
+        "scientific_delivery",
+        "objection_handling"
+      ],
+      "timestamp": "2026-04-20T00:00:00+00:00"
+    }
+  ],
+  "subskill_trends": {
+    "opening": "stable",
+    "profiling": "stable",
+    "need_discovery": "stable",
+    "scientific_delivery": "improving",
+    "objection_handling": "improving",
+    "closing_followup": "stable"
+  },
+  "fallback_subskills": [
+    "scientific_delivery",
+    "objection_handling",
+    "profiling"
+  ],
+  "subskill_signals": {
+    "opening": {
+      "trend": "stable",
+      "rolling_average": 3.5,
+      "history_count": 4,
+      "last_score": 4
+    },
+    "profiling": {
+      "trend": "stable",
+      "rolling_average": 3.5,
+      "history_count": 4,
+      "last_score": 4
+    },
+    "need_discovery": {
+      "trend": "stable",
+      "rolling_average": 3.5,
+      "history_count": 4,
+      "last_score": 4
+    },
+    "scientific_delivery": {
+      "trend": "improving",
+      "rolling_average": 3.8,
+      "history_count": 4,
+      "last_score": 4
+    },
+    "objection_handling": {
+      "trend": "improving",
+      "rolling_average": 3.9,
+      "history_count": 4,
+      "last_score": 4
+    },
+    "closing_followup": {
+      "trend": "stable",
+      "rolling_average": 3.5,
+      "history_count": 4,
+      "last_score": 4
+    }
+  },
+  "expected": {
+    "dominant_cluster": {
+      "subskills": [
+        "objection_handling",
+        "scientific_delivery"
+      ],
+      "occurrences": 2
+    },
+    "recommendation_ids": [
+      "formulary_restriction_negotiation",
+      "skeptical_doctor_competitor_pressure",
+      "new_product_adoption_barrier"
+    ],
+    "top_target_subskills": [
+      "profiling",
+      "scientific_delivery",
+      "objection_handling"
+    ],
+    "top_difficulty": "hard",
+    "top_reason_fragments": [
+      "recurring",
+      "the latest run handled evidence well and is ready for harder pressure",
+      "hard difficulty"
+    ]
+  }
+}

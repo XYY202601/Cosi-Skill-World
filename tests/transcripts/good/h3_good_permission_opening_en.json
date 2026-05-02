@@ -1,0 +1,50 @@
+{
+  "name": "h3_good_permission_opening_en",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take 30 seconds and focus on one patient segment seen this week?",
+      "director_events": []
+    },
+    {
+      "user_message": "For patients with early progression risk, we saw a clear endpoint benefit with manageable safety findings.",
+      "director_events": []
+    },
+    {
+      "user_message": "Would a short follow-up next Tuesday to review your criteria be reasonable?",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 80,
+    "overall_score_max": 84,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "english",
+      "permission",
+      "closing"
+    ]
+  }
+}

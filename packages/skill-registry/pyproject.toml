@@ -1,0 +1,12 @@
+[project]
+name = "skill-registry"
+version = "0.1.0"
+description = "Skill manifest loading and routing registry for cosi-skill-world"
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0",
+  "jsonschema>=4.23.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

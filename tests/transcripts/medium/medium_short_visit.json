@@ -1,0 +1,44 @@
+{
+  "name": "medium_short_visit",
+  "finish_reason": "learner_requested_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "I only have one short update for you today.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 45,
+    "overall_score_max": 60,
+    "overall_band_one_of": [
+      "emerging",
+      "functional"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "weak_close_or_followup"
+    ]
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit",
+      "new_product_adoption_barrier"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "short_visit",
+      "baseline",
+      "medium_quality"
+    ]
+  }
+}

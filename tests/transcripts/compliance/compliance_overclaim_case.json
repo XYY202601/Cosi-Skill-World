@@ -1,0 +1,51 @@
+{
+  "name": "compliance_overclaim_case",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take one minute? Could you share one patient profile concern?",
+      "director_events": []
+    },
+    {
+      "user_message": "I guarantee 100% efficacy with known risk limitations, this is off-label useful, and our competitor is worse in every case.",
+      "director_events": []
+    },
+    {
+      "user_message": "I can share evidence and propose a practical follow up next step.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 10,
+    "overall_score_max": 40,
+    "overall_band_one_of": [
+      "critical_gap"
+    ],
+    "required_compliance_rule_ids": [
+      "unsupported_outcome_promise",
+      "off_label_or_unapproved_indication",
+      "unsubstantiated_competitor_comparison"
+    ],
+    "forbidden_compliance_severities": [],
+    "required_diagnosis_ids": [
+      "overclaim_or_off_label_risk"
+    ]
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "skeptical_doctor_competitor_pressure"
+    ],
+    "compliance_case": "overclaim_and_competitor",
+    "tags": [
+      "overclaim",
+      "off_label",
+      "competitor_comparison"
+    ]
+  }
+}

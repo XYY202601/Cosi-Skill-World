@@ -1,0 +1,40 @@
+id: formulary_restriction_negotiation
+title: Formulary Restriction Negotiation
+difficulty: hard
+focus_subskills: [profiling, scientific_delivery, objection_handling]
+doctor_persona_id: formulary_constrained_prescriber
+constraints:
+  max_turns: 14
+success_criteria:
+  - identifies_institution_constraints
+  - proposes_realistic_next_step
+failure_patterns:
+  - ignores_formulary_or_pathway_constraints
+  - pushes_unrealistic_adoption_request
+  - fails_to_reframe_to_actionable_next_step
+playbook:
+  learning_objective: Navigate institutional barriers by identifying specific constraints and proposing actionable next steps.
+  target_subskills: [profiling, scientific_delivery, objection_handling]
+  expected_flow:
+    - Doctor expresses interest but mentions institutional formulary restrictions.
+    - MR probes the specific process for adding a drug to the formulary.
+    - MR identifies key stakeholders or committees.
+    - MR proposes a realistic next step (e.g., providing data to a committee member).
+  key_discovery_questions:
+    - What is the process for reviewing new products at this hospital?
+    - Who are the key members of the drug committee?
+  acceptable_evidence_moves:
+    - "I can provide the pharmacoeconomic data requested by the committee."
+    - "Would it be helpful if I shared our latest study with the Head of Pharmacy?"
+  common_failure_patterns:
+    - "You're the doctor, can't you just prescribe it anyway?"
+    - "Our drug is so much better, the committee should just accept it."
+    - Failing to identify the key stakeholders beyond the current doctor.
+  recovery_moves:
+    - If the doctor gets annoyed by the push, acknowledge the difficulty of the process and offer a lower-barrier next step.
+  completion_signals:
+    - Doctor agrees to a specific, realistic action to move the formulary process forward.
+  positive_example_moves:
+    - "I understand the committee meets next month. What specific data would they need to see to consider our product?"
+  negative_example_moves:
+    - "Just fill out the form, it shouldn't be that hard."

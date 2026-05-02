@@ -1,0 +1,63 @@
+{
+  "name": "weak_opening_overlong_intro",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "Let me start with our full brand history before we get to your patients.",
+      "director_events": [
+        "opening_overlong"
+      ]
+    },
+    {
+      "user_message": "I also want to cover our company background before we discuss relevance.",
+      "director_events": [
+        "opening_overlong"
+      ]
+    },
+    {
+      "user_message": "One more setup point before I ask about your practice.",
+      "director_events": [
+        "opening_overlong"
+      ]
+    }
+  ],
+  "expected": {
+    "overall_score_min": 55,
+    "overall_score_max": 65,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "opening_not_permission_based",
+      "poor_time_management"
+    ],
+    "forbidden_diagnosis_ids": [
+      "insufficient_need_discovery"
+    ],
+    "required_subskill_score_max": {
+      "opening": 2,
+      "closing_followup": 2
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "opening_gap",
+      "overlong_intro",
+      "low_interest"
+    ]
+  }
+}

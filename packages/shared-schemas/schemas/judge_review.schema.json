@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "JudgeReview",
+  "type": "object",
+  "required": [
+    "rubric_version",
+    "subskills",
+    "overall_score",
+    "overall_band",
+    "strengths",
+    "priority_subskills",
+    "diagnosis",
+    "timeline"
+  ],
+  "properties": {
+    "rubric_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "subskills": {
+      "type": "object",
+      "required": [
+        "preparation",
+        "opening",
+        "profiling",
+        "scientific_delivery",
+        "need_discovery",
+        "objection_handling",
+        "closing_followup"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "preparation": { "$ref": "#/$defs/subskillScore" },
+        "opening": { "$ref": "#/$defs/subskillScore" },
+        "profiling": { "$ref": "#/$defs/subskillScore" },
+        "scientific_delivery": { "$ref": "#/$defs/subskillScore" },
+        "need_discovery": { "$ref": "#/$defs/subskillScore" },
+        "objection_handling": { "$ref": "#/$defs/subskillScore" },
+        "closing_followup": { "$ref": "#/$defs/subskillScore" }
+      }
+    },
+    "overall_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "overall_band": {
+      "type": "string",
+      "enum": ["critical_gap", "emerging", "functional", "strong", "excellent"]
+    },
+    "strengths": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/subskillId" },
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "priority_subskills": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/subskillId" },
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "diagnosis": {
+      "type": "object",
+      "required": ["primary", "selection_basis"],
+      "properties": {
+        "primary": {
+          "type": "array",
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "kind",
+              "severity",
+              "summary",
+              "related_subskills",
+              "recommendation_focus"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "kind": {
+                "type": "string",
+                "enum": ["skill_gap", "communication_gap", "compliance_risk"]
+              },
+              "severity": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "critical"]
+              },
+              "summary": {
+                "type": "string",
+                "minLength": 1
+              },
+              "related_subskills": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/subskillId" },
+                "uniqueItems": true
+              },
+              "recommendation_focus": {
+                "type": "array",
+                "items": { "$ref": "#/$defs/subskillId" },
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "selection_basis": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "voice_signals": {
+      "type": "object",
+      "properties": {
+        "pacing": { "$ref": "#/$defs/voiceSignalScore" },
+        "hesitation": { "$ref": "#/$defs/voiceSignalScore" },
+        "interruption_recovery": { "$ref": "#/$defs/voiceSignalScore" },
+        "clarity": { "$ref": "#/$defs/voiceSignalScore" }
+      },
+      "additionalProperties": false
+    },
+    "timeline": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/timelineItem" }
+    }
+  },
+  "$defs": {
+    "subskillId": {
+      "type": "string",
+      "enum": [
+        "preparation",
+        "opening",
+        "profiling",
+        "scientific_delivery",
+        "need_discovery",
+        "objection_handling",
+        "closing_followup"
+      ]
+    },
+    "evidenceItem": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280
+        },
+        {
+          "type": "object",
+          "required": ["summary"],
+          "properties": {
+            "summary": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 280
+            },
+            "turn_index": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "speaker": {
+              "type": "string",
+              "enum": ["learner", "doctor", "system"]
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 280
+            },
+            "tags": {
+              "type": "array",
+              "maxItems": 4,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              }
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "subskillScore": {
+      "type": "object",
+      "required": ["score", "evidence"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/evidenceItem" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "voiceSignalScore": {
+      "type": "object",
+      "required": ["score", "evidence"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/evidenceItem" }
+        }
+      },
+      "additionalProperties": false
+    },
+    "timelineItem": {
+      "type": "object",
+      "required": ["turn_index", "phase", "rating", "comment"],
+      "properties": {
+        "turn_index": { "type": "integer", "minimum": 1 },
+        "phase": { "type": "string" },
+        "rating": { "type": "string", "enum": ["poor", "fair", "good", "excellent"] },
+        "comment": { "type": "string" },
+        "events": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

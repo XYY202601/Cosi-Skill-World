@@ -1,0 +1,73 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg18
+    environment:
+      POSTGRES_DB: cosi
+      POSTGRES_USER: cosi
+      POSTGRES_PASSWORD: cosi
+    ports:
+      - "5439:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+
+  runtime:
+    build:
+      context: .
+      dockerfile: apps/mr-visit-jp-runtime/Dockerfile
+    ports:
+      - "8100:8100"
+    environment:
+      - MR_RUNTIME_PERSISTENCE_MODE=sql
+      - MR_RUNTIME_SQLALCHEMY_URL=postgresql+psycopg://cosi:cosi@postgres:5432/cosi
+    depends_on:
+      postgres:
+        condition: service_started
+      alembic-migrate:
+        condition: service_completed_successfully
+
+  alembic-migrate:
+    build:
+      context: .
+      dockerfile: apps/mr-visit-jp-runtime/Dockerfile
+    environment:
+      - MR_RUNTIME_SQLALCHEMY_URL=postgresql+psycopg://cosi:cosi@postgres:5432/cosi
+    depends_on:
+      postgres:
+        condition: service_started
+    command: >
+      sh -c "alembic upgrade head"
+
+  hermes:
+    build:
+      context: .
+      dockerfile: apps/hermes-orchestrator/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_URL=postgresql://cosi:cosi@postgres:5432/cosi
+      - REDIS_URL=redis://redis:6379/0
+      - RUNTIME_API_BASE=http://runtime:8100
+    depends_on:
+      - postgres
+      - redis
+      - runtime
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - HERMES_API_BASE=http://hermes:8000
+      - NEXT_PUBLIC_HERMES_API_BASE=http://localhost:8000
+    depends_on:
+      - hermes
+
+volumes:
+  postgres_data:

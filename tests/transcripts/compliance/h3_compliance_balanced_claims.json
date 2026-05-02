@@ -1,0 +1,44 @@
+{
+  "name": "h3_compliance_balanced_claims",
+  "finish_reason": "learner_requested_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "I will keep claims within label scope and discuss both efficacy endpoint and safety limitations.",
+      "director_events": []
+    },
+    {
+      "user_message": "If relevant, I can provide source references for review.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 69,
+    "overall_score_max": 73,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "new_product_adoption_barrier"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "compliance",
+      "balanced",
+      "fair_claim"
+    ]
+  }
+}

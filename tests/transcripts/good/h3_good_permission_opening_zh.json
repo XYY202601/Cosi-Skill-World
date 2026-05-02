@@ -1,0 +1,50 @@
+{
+  "name": "h3_good_permission_opening_zh",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "我先用30秒，可以吗？只讲您门诊最常见的一类患者。",
+      "director_events": []
+    },
+    {
+      "user_message": "在这类患者中，主要终点有改善，安全性也在可预期范围内。",
+      "director_events": []
+    },
+    {
+      "user_message": "下周是否可以安排5分钟，按您的决策标准再快速核对一次？",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 71,
+    "overall_score_max": 75,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "chinese",
+      "permission",
+      "closing"
+    ]
+  }
+}

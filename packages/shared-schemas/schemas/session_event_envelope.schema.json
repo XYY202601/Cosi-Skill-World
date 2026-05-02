@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://cosi-skill-world.local/schemas/session_event_envelope.schema.json",
+  "title": "SessionEventEnvelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "type",
+    "source",
+    "stage",
+    "content",
+    "metadata",
+    "skill_id",
+    "session_id",
+    "turn_id",
+    "seq",
+    "timestamp",
+    "schema_version"
+  ],
+  "properties": {
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stage": {
+      "type": "string",
+      "minLength": 1
+    },
+    "content": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "skill_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "turn_id": {
+      "type": ["string", "null"]
+    },
+    "seq": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "minLength": 1
+    },
+    "schema_version": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

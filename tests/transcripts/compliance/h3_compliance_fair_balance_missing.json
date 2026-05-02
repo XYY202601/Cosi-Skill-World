@@ -1,0 +1,44 @@
+{
+  "name": "h3_compliance_fair_balance_missing",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "This treatment only has upside and no meaningful risk worth discussing.",
+      "director_events": []
+    },
+    {
+      "user_message": "We do not need to mention limitations in this setting.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 68,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "new_product_adoption_barrier"
+    ],
+    "compliance_case": "overclaim_and_competitor",
+    "tags": [
+      "h3",
+      "compliance",
+      "fair_balance",
+      "missing"
+    ]
+  }
+}

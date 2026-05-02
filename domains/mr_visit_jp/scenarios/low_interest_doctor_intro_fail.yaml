@@ -1,0 +1,39 @@
+id: low_interest_doctor_intro_fail
+title: Low Interest Intro Recovery
+difficulty: easy
+focus_subskills: [opening, need_discovery]
+doctor_persona_id: low_interest_generalist
+constraints:
+  max_turns: 10
+success_criteria:
+  - recovers_after_weak_opening
+  - identifies_one_clinical_need
+failure_patterns:
+  - keeps_pitching_after_interest_drop
+  - fails_to_prove_relevance_quickly
+  - asks_generic_questions_without_need_signal
+playbook:
+  learning_objective: Practice recovery techniques and value-based probing when initial interest is low.
+  target_subskills: [opening, need_discovery]
+  expected_flow:
+    - MR makes a generic opening.
+    - Doctor shows low interest or disengagement.
+    - MR acknowledges the disengagement and pivots to a specific patient-centric question.
+    - MR identifies a clinical pain point.
+  key_discovery_questions:
+    - Are there any patients who aren't responding well to the current standard of care?
+  acceptable_evidence_moves:
+    - "I apologize for being vague. Let me focus on one specific benefit for elderly patients."
+    - "What is your biggest challenge when treating [Condition]?"
+  common_failure_patterns:
+    - Ignoring the "I'm busy" signal and continuing the planned script.
+    - Becoming overly apologetic without adding value.
+    - Failing to acknowledge the doctor's lack of interest or time.
+  recovery_moves:
+    - If the doctor tries to end the visit, ask one high-impact "What if" question.
+  completion_signals:
+    - Doctor asks a question or acknowledges a specific clinical relevance.
+  positive_example_moves:
+    - "I see that you're quite busy. If I could show you one piece of data that might save time for your nursing staff, would that be useful?"
+  negative_example_moves:
+    - "I have 5 more slides to show you, please bear with me."

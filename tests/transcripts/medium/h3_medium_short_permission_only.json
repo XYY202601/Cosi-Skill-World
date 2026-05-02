@@ -1,0 +1,45 @@
+{
+  "name": "h3_medium_short_permission_only",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take one minute to share a quick update?",
+      "director_events": []
+    },
+    {
+      "user_message": "We observed benefit in selected patients, though I can prepare fuller context next time.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 72,
+    "overall_score_max": 76,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "medium",
+      "short",
+      "permission",
+      "limited_depth"
+    ]
+  }
+}

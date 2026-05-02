@@ -1,0 +1,170 @@
+{
+  "current_scenario_id": "skeptical_doctor_competitor_pressure",
+  "current_scenario_difficulty": "medium",
+  "review": {
+    "overall_score": 58,
+    "priority_subskills": [
+      "scientific_delivery",
+      "objection_handling"
+    ],
+    "diagnosis": {
+      "primary": [
+        {
+          "id": "medium_compliance_gap",
+          "summary": "The learner stayed partially persuasive after a compliance-sensitive objection.",
+          "recommendation_focus": [
+            "scientific_delivery",
+            "objection_handling"
+          ],
+          "related_subskills": [
+            "scientific_delivery",
+            "objection_handling"
+          ]
+        }
+      ]
+    },
+    "compliance_flags": [
+      {
+        "severity": "medium",
+        "label": "unsupported_claim"
+      }
+    ],
+    "subskills": {
+      "opening": {
+        "score": 3
+      },
+      "profiling": {
+        "score": 3
+      },
+      "need_discovery": {
+        "score": 3
+      },
+      "scientific_delivery": {
+        "score": 2
+      },
+      "objection_handling": {
+        "score": 2
+      },
+      "closing_followup": {
+        "score": 3
+      }
+    }
+  },
+  "recent_history": [
+    {
+      "session_id": "sess_medium_risk_001",
+      "scenario_id": "cautious_doctor_evidence_check",
+      "weak_subskills": [
+        "scientific_delivery",
+        "objection_handling"
+      ],
+      "max_compliance_severity": "medium",
+      "timestamp": "2026-04-20T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_medium_risk_002",
+      "scenario_id": "new_product_adoption_barrier",
+      "weak_subskills": [
+        "scientific_delivery"
+      ],
+      "max_compliance_severity": "medium",
+      "timestamp": "2026-04-21T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_medium_risk_003",
+      "scenario_id": "skeptical_doctor_competitor_pressure",
+      "weak_subskills": [
+        "scientific_delivery",
+        "objection_handling"
+      ],
+      "max_compliance_severity": "medium",
+      "timestamp": "2026-04-22T00:00:00+00:00"
+    }
+  ],
+  "subskill_trends": {
+    "opening": "stable",
+    "profiling": "stable",
+    "need_discovery": "stable",
+    "scientific_delivery": "declining",
+    "objection_handling": "stable",
+    "closing_followup": "stable"
+  },
+  "fallback_subskills": [
+    "scientific_delivery",
+    "objection_handling",
+    "profiling"
+  ],
+  "subskill_signals": {
+    "opening": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "profiling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "need_discovery": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "scientific_delivery": {
+      "trend": "declining",
+      "rolling_average": 2.0,
+      "history_count": 3,
+      "last_score": 2
+    },
+    "objection_handling": {
+      "trend": "stable",
+      "rolling_average": 2.33,
+      "history_count": 3,
+      "last_score": 2
+    },
+    "closing_followup": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    }
+  },
+  "expected": {
+    "dominant_cluster": {
+      "subskills": [
+        "objection_handling",
+        "scientific_delivery"
+      ],
+      "occurrences": 2
+    },
+    "recommendation_ids": [
+      "formulary_restriction_negotiation",
+      "cautious_doctor_evidence_check",
+      "busy_doctor_short_visit"
+    ],
+    "top_target_subskills": [
+      "profiling",
+      "scientific_delivery",
+      "objection_handling"
+    ],
+    "top_difficulty": "hard",
+    "top_reason_fragments": [
+      "recurring",
+      "longer-window decline",
+      "compliance-sensitive objection"
+    ],
+    "top_evidence_fragments": [
+      "repeated medium compliance risk"
+    ],
+    "top_stop_condition_fragments": [
+      "compliant handling",
+      "no high-risk compliance flag"
+    ],
+    "top_reason_category": "mixed",
+    "top_recommendation_type": "compliance",
+    "top_suggested_repetition_count": 2
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "name": "h3_good_evidence_specific",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "May I align on your key endpoint first, so I can stay relevant?",
+      "director_events": []
+    },
+    {
+      "user_message": "In subgroup B, Trial Z showed endpoint improvement, with grade 3-4 events remaining within expected range.",
+      "director_events": []
+    },
+    {
+      "user_message": "For this segment only, would a chart review be the right low-risk next step?",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 78,
+    "overall_score_max": 82,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "evidence",
+      "endpoint",
+      "safety"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+# Node
+node_modules/
+.pnpm-store/
+.next/
+dist/
+build/
+coverage/
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Env
+.env
+.env.local
+
+# External references (read-only local clones)
+references/hermes-agent/
+references/deeptutor/
+
+# OS/Editor
+.DS_Store
+.idea/
+.vscode/
+
+# Scratch / temp
+scratch_*.py
+analysis_results.md
+storage_test/
+
+# Playwright
+/playwright-report/
+/.playwright-report/
+/test-results/
+/.test-results/
+
+# Runtime data
+*.log
+.tmp/
+
+# Runtime session / event data (auto-generated during local dev)
+.data/

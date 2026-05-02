@@ -1,0 +1,59 @@
+{
+  "name": "h3_continuity_opening_carryover_gap",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "Great to see you again. Let me directly present product data.",
+      "director_events": [
+        "carryover_opening_gap"
+      ]
+    },
+    {
+      "user_message": "I did not address the prior discussion outcome.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 71,
+    "overall_score_max": 75,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "revisit_after_prior_rejection"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "continuity",
+      "carryover",
+      "opening_gap"
+    ]
+  },
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "opening"
+    ],
+    "suggested_focus_subskills": [
+      "opening",
+      "need_discovery"
+    ],
+    "next_actions": [
+      "Acknowledge prior rejection before pitching.",
+      "Ask one concrete need question."
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "h3_medium_new_product_barrier_partial",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "For new-product adoption, what would be your minimum evidence threshold before trial use?",
+      "director_events": []
+    },
+    {
+      "user_message": "I can prepare one concise endpoint plus safety summary against that threshold.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 82,
+    "overall_score_max": 86,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "new_product_adoption_barrier"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "medium",
+      "adoption",
+      "barrier",
+      "partial"
+    ]
+  }
+}

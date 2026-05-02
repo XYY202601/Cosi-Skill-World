@@ -1,0 +1,58 @@
+{
+  "name": "strong_opening_permission_based_flow",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take one minute? Could you share which patient profile is hardest to manage today?",
+      "director_events": []
+    },
+    {
+      "user_message": "One study suggests a practical benefit with clear limitations for that group.",
+      "director_events": []
+    },
+    {
+      "user_message": "If useful, the next step could be a brief follow up next week with the evidence summary.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 88,
+    "overall_score_max": 95,
+    "overall_band_one_of": [
+      "excellent"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [
+      "opening_not_permission_based",
+      "poor_time_management",
+      "weak_close_or_followup"
+    ],
+    "required_subskill_score_min": {
+      "opening": 5,
+      "need_discovery": 5,
+      "scientific_delivery": 5
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "strong_opening",
+      "permission_based",
+      "rapport"
+    ]
+  }
+}

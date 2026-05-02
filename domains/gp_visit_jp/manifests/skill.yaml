@@ -1,0 +1,143 @@
+id: gp_visit_jp
+version: 0.1.0
+name: Japanese GP Visit Training
+registration:
+  enabled: true
+routing:
+  default_for_unscoped_routes: false
+ui:
+  category: clinical_training
+  default_label: Japanese GP Visit Training
+marketplace:
+  title: Japanese GP Visit Training
+  summary: Practice general practitioner communication skills with Japanese patient personas. Covers patient reception, symptom interview, and lifestyle advice.
+  provider: COSI Platform
+  locales:
+    - ja
+    - en
+  modality: text
+  maturity: spike
+  compatibility:
+    min_runtime_version: 0.1.0
+  privacy:
+    data_notes: Session transcripts contain simulated patient interactions. This skill is a spike and its runtime contract is not yet fully validated.
+runtime:
+  app: gp-visit-jp-runtime
+  base_path: /v1
+  health_path: /healthz
+  base_url_env: GP_VISIT_JP_RUNTIME_BASE
+capabilities:
+  - id: scenario_catalog
+    name: Scenario Catalog
+    description: List scenarios and policy checkpoints for the GP communication spike.
+    actions:
+      - list_scenarios
+      - get_evaluation_gates
+  - id: practice_session
+    name: Practice Session
+    description: Start, inspect, continue, and finish a GP communication session.
+    actions:
+      - start_session
+      - get_session
+      - send_turn
+      - finish_session
+  - id: review
+    name: Review
+    description: Read finalized reviews and replay session events for the GP spike.
+    actions:
+      - get_review
+      - get_session_events
+  - id: progress
+    name: Progress
+    description: Read learner progress and recommendations for the GP spike.
+    actions:
+      - get_progress_snapshot
+actions:
+  - id: list_scenarios
+    capability: scenario_catalog
+    method: GET
+    path: /scenarios
+    expose:
+      - root
+      - skill
+    description: List available scenarios for this skill.
+  - id: get_evaluation_gates
+    capability: scenario_catalog
+    method: GET
+    path: /evaluation-gates
+    expose:
+      - root
+      - skill
+    description: Read evaluation gate status for this skill.
+  - id: start_session
+    capability: practice_session
+    method: POST
+    path: /sessions/start
+    expose:
+      - root
+      - skill
+    description: Start a new learner session for a scenario.
+  - id: get_session
+    capability: practice_session
+    method: GET
+    path: /sessions/{session_id}
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read current session state for an active or finalized session.
+  - id: send_turn
+    capability: practice_session
+    method: POST
+    path: /sessions/{session_id}/turn
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Send one learner turn into the domain runtime.
+  - id: finish_session
+    capability: practice_session
+    method: POST
+    path: /sessions/{session_id}/finish
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Finalize the session and generate review plus progress updates.
+  - id: get_review
+    capability: review
+    method: GET
+    path: /sessions/{session_id}/review
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read the finalized review for a session.
+  - id: get_session_events
+    capability: review
+    method: GET
+    path: /sessions/{session_id}/events
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read the persisted event stream for a session.
+  - id: get_progress_snapshot
+    capability: progress
+    method: GET
+    path: /learners/{learner_id}/progress
+    expose:
+      - root
+      - skill
+    path_params:
+      - learner_id
+    description: Read the learner progress snapshot for this skill.
+subskills:
+  - patient_reception
+  - symptom_interview
+  - lifestyle_advice

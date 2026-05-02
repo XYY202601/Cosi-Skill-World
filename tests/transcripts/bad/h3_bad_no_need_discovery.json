@@ -1,0 +1,44 @@
+{
+  "name": "h3_bad_no_need_discovery",
+  "finish_reason": "learner_requested_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "This is a general update and I will continue with product details.",
+      "director_events": []
+    },
+    {
+      "user_message": "Please just listen to the full deck first.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 69,
+    "overall_score_max": 73,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "bad",
+      "need_discovery",
+      "pitch_only"
+    ]
+  }
+}

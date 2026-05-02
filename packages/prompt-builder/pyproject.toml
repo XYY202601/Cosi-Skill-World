@@ -1,0 +1,11 @@
+[project]
+name = "prompt-builder"
+version = "0.1.0"
+description = "Deterministic prompt asset loading and rendering utilities for cosi-skill-world"
+requires-python = ">=3.11"
+dependencies = [
+  "PyYAML>=6.0"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

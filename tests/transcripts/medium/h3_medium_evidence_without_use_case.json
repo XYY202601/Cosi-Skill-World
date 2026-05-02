@@ -1,0 +1,44 @@
+{
+  "name": "h3_medium_evidence_without_use_case",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "The trial showed endpoint improvement and acceptable safety.",
+      "director_events": []
+    },
+    {
+      "user_message": "I should have been clearer on which patient segment this applies to.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 68,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "medium",
+      "evidence",
+      "partial_specificity"
+    ]
+  }
+}

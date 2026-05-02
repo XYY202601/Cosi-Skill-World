@@ -1,0 +1,114 @@
+version: 1
+rule_set_id: mr_visit_jp_alpha_v1
+severity_levels:
+  - low
+  - medium
+  - high
+  - critical
+review_policy:
+  blocks_excellent_band_on: [high, critical]
+  requires_manual_review_on: [critical]
+  include_top_flags_in_review: 3
+rules:
+  - id: off_label_or_unapproved_indication
+    category: claim_scope
+    severity: critical
+    tag: off_label_risk
+    applies_to: [scientific_delivery, objection_handling]
+    related_diagnosis_types: [overclaim_or_off_label_risk]
+    summary: Do not state or imply benefits, populations, or uses outside the approved label.
+    must_flag_when:
+      - The rep recommends use outside approved indication or approved patient population.
+      - The rep presents exploratory or anecdotal use as established fact.
+      - The rep expands claim scope beyond approved evidence in response to pressure.
+    acceptable_when:
+      - The rep stays within approved indication language.
+      - The rep declines to speculate beyond approved evidence.
+    required_response:
+      - Re-anchor to approved indication boundaries.
+      - Offer compliant follow-up instead of unsupported claim expansion.
+    review_effect:
+      requires_coaching_note: true
+      counts_as_major_risk: true
+  - id: unsupported_outcome_promise
+    category: evidence_integrity
+    severity: high
+    tag: unsupported_promise
+    applies_to: [scientific_delivery, closing_followup]
+    related_diagnosis_types: [overclaim_or_off_label_risk]
+    summary: Do not promise guaranteed outcomes, certainty, or superiority without approved evidence.
+    must_flag_when:
+      - The rep promises patient outcome certainty or guaranteed response.
+      - The rep implies superiority as fact without approved supporting evidence.
+      - The rep uses absolute language to force commitment.
+    acceptable_when:
+      - The rep uses evidence-qualified language and appropriate limitations.
+      - The rep frames outcomes as evidence-based possibility rather than certainty.
+    required_response:
+      - Use qualified evidence language.
+      - State limitations or uncertainty when the data does not support certainty.
+    review_effect:
+      requires_coaching_note: true
+      counts_as_major_risk: true
+  - id: fair_balance_omission
+    category: fair_balance
+    severity: high
+    tag: fair_balance_omission
+    applies_to: [scientific_delivery]
+    related_diagnosis_types: [fair_balance_omission]
+    summary: Benefits must be presented with appropriate limitation, risk, or uncertainty framing.
+    must_flag_when:
+      - The rep presents benefits only and omits meaningful limitations or risk context.
+      - The rep minimizes safety or uncertainty concerns after the doctor raises them.
+    acceptable_when:
+      - The rep acknowledges limitations, uncertainty, or risk context in proportion to the claim.
+      - The rep stays concise without deleting material balance.
+    required_response:
+      - Pair key benefit statements with relevant limitation or risk framing.
+    review_effect:
+      requires_coaching_note: true
+      counts_as_major_risk: false
+  - id: unsubstantiated_competitor_comparison
+    category: competitor_conduct
+    severity: high
+    tag: unsubstantiated_competitor_comparison
+    applies_to: [objection_handling, scientific_delivery]
+    related_diagnosis_types: [objection_response_gap]
+    summary: Do not attack competitors or make unsupported superiority comparisons.
+    must_flag_when:
+      - The rep makes negative competitor claims without approved evidence.
+      - The rep reframes pressure by disparaging a competitor instead of addressing decision criteria.
+    acceptable_when:
+      - The rep compares only within approved and supportable claim boundaries.
+      - The rep redirects to doctor needs, evidence, or appropriate next steps.
+    required_response:
+      - Keep comparisons factual, limited, and supportable.
+      - Avoid emotional or dismissive competitor language.
+    review_effect:
+      requires_coaching_note: true
+      counts_as_major_risk: true
+  - id: adverse_event_reporting_failure
+    category: safety_reporting
+    severity: critical
+    tag: adverse_event_reporting_failure
+    applies_to: [profiling, closing_followup]
+    related_diagnosis_types: [adverse_event_escalation_miss]
+    summary: Potential adverse events must be acknowledged, minimally captured, and escalated according to SOP.
+    must_flag_when:
+      - The rep ignores a possible adverse event or moves back into promotion.
+      - The rep fails to state that internal follow-up and escalation are required.
+      - The rep gives medical advice instead of following reporting procedure.
+    acceptable_when:
+      - The rep acknowledges the report, captures the basic facts, and states the follow-up process.
+      - The rep avoids speculative medical judgment.
+    required_response:
+      - Capture suspect product, event description, timing, and follow-up path.
+      - Route the case according to SOP and document the next action.
+    required_capture_fields:
+      - suspect_product
+      - event_description
+      - event_timing
+      - reporter_contact_path
+    review_effect:
+      requires_coaching_note: true
+      counts_as_major_risk: true

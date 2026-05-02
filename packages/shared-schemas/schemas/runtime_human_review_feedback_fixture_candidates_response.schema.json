@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeHumanReviewFeedbackFixtureCandidatesResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["payload"],
+  "properties": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_version", "domain_id", "generated_at", "candidate_count", "skipped_count", "candidates"],
+      "properties": {
+        "schema_version": { "type": "integer", "minimum": 1 },
+        "domain_id": { "type": "string", "minLength": 1 },
+        "generated_at": { "type": "string", "minLength": 1 },
+        "candidate_count": { "type": "integer", "minimum": 0 },
+        "skipped_count": { "type": "integer", "minimum": 0 },
+        "candidates": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/candidate" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "candidate": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["candidate_id", "record_id", "version", "ready"],
+      "properties": {
+        "candidate_id": { "type": "string", "minLength": 1 },
+        "record_id": { "type": "string", "minLength": 1 },
+        "version": { "type": "integer", "minimum": 1 },
+        "ready": { "type": "boolean" },
+        "reason": { "type": "string" },
+        "fixture_path": { "type": "string", "minLength": 1 },
+        "fixture": {
+          "type": "object",
+          "additionalProperties": true,
+          "required": ["name", "finish_reason", "scenario_focus_subskills", "turns", "expected", "metadata"],
+          "properties": {
+            "name": { "type": "string", "minLength": 1 },
+            "finish_reason": { "type": "string", "minLength": 1 },
+            "scenario_focus_subskills": {
+              "type": "array",
+              "items": { "type": "string", "minLength": 1 }
+            },
+            "turns": {
+              "type": "array",
+              "items": { "type": "object" }
+            },
+            "expected": { "type": "object" },
+            "metadata": { "type": "object" }
+          }
+        }
+      }
+    }
+  }
+}

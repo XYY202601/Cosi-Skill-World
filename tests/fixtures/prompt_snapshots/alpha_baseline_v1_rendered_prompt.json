@@ -1,0 +1,97 @@
+{
+  "system_prompt": "You are a structured artifact generator for Japanese MR visit training.\n\nYou must return a single strict JSON object and no markdown.\n\n[judge] You are the Judge artifact generator for Japanese MR visit training.\nEvaluate only observable behavior from the provided transcript turns.\nBe strict about schema and score consistency.\n\n[coach] You are the Coach artifact generator for Japanese MR visit training.\nGenerate concise, actionable feedback aligned with diagnosis and weak subskills.\nFocus on next-session behavior change, not generic motivation.\n\n[compliance] You are the Compliance artifact generator for Japanese MR visit training.\nFlag only clear, evidence-backed risks from transcript content.\nPrefer precision over over-flagging.",
+  "user_payload": {
+    "contracts": {
+      "coach": {
+        "contract_id": "alpha_baseline_v1:coach:v1",
+        "output_requirements": [
+          "Return only fields required by the coach feedback schema.",
+          "Use version=1.",
+          "focus_subskills length must be 1..3 and use only ids from `subskill_ids`.",
+          "next_actions length must be 1..4.",
+          "Keep actions concrete and executable in the next session."
+        ],
+        "task_prompt": "Produce `coaching_feedback` for the session review.\nPrioritize the most important subskills and concrete next actions.",
+        "version": 1
+      },
+      "compliance": {
+        "contract_id": "alpha_baseline_v1:compliance:v1",
+        "output_requirements": [
+          "Return only fields required by the compliance flags schema.",
+          "compliance_flags must be an array and contain at most 3 items.",
+          "rule_id must align with domain rules where possible.",
+          "severity must use supported levels (low|medium|high|critical).",
+          "Each summary should be concise and evidence-oriented."
+        ],
+        "task_prompt": "Produce `compliance_flags` based on transcript turns and domain compliance rules.\nKeep only the highest-priority items for review.",
+        "version": 1
+      },
+      "judge": {
+        "contract_id": "alpha_baseline_v1:judge:v1",
+        "output_requirements": [
+          "Return only fields required by the judge review schema.",
+          "Use rubric_version=1.",
+          "subskills must include every item in `subskill_ids`.",
+          "Each subskill score must be an integer in range 0..5.",
+          "priority_subskills length must be 1..3 and use only ids from `subskill_ids`.",
+          "diagnosis.primary length must be 1..3."
+        ],
+        "task_prompt": "Produce `judge_review` for the current session.\nKeep diagnosis grounded in transcript evidence and scenario focus.",
+        "version": 1
+      }
+    },
+    "domain": "mr_visit_jp",
+    "prompting": {
+      "contracts": {
+        "coach": {
+          "contract_id": "alpha_baseline_v1:coach:v1",
+          "version": 1
+        },
+        "compliance": {
+          "contract_id": "alpha_baseline_v1:compliance:v1",
+          "version": 1
+        },
+        "judge": {
+          "contract_id": "alpha_baseline_v1:judge:v1",
+          "version": 1
+        }
+      },
+      "experiment_id": "prompt-snapshot-exp",
+      "flags": [
+        "snapshot_test"
+      ],
+      "profile_id": "alpha_baseline_v1"
+    },
+    "required_output_keys": [
+      "judge_review",
+      "coaching_feedback",
+      "compliance_flags"
+    ],
+    "scenario_focus_subskills": [
+      "opening",
+      "need_discovery",
+      "scientific_delivery"
+    ],
+    "subskill_ids": [
+      "opening",
+      "profiling",
+      "scientific_delivery",
+      "need_discovery",
+      "objection_handling",
+      "closing_followup"
+    ],
+    "turn_count": 2,
+    "turns": [
+      {
+        "doctor_reply": "短めでお願いします。どの患者さん向けですか。",
+        "turn_index": 1,
+        "user_message": "本日は3分だけ、先生の患者像に合う話題を一つだけ共有してもよいでしょうか。"
+      },
+      {
+        "doctor_reply": "その根拠と安全性の見方を簡潔に教えてください。",
+        "turn_index": 2,
+        "user_message": "高齢で再発リスクを気にされる患者さんに絞って、主要データを一つだけ確認したいです。"
+      }
+    ]
+  }
+}

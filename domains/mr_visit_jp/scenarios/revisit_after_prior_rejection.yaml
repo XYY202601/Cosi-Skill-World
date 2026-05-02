@@ -1,0 +1,38 @@
+id: revisit_after_prior_rejection
+title: Revisit After Prior Rejection
+difficulty: medium
+focus_subskills: [opening, profiling, need_discovery]
+doctor_persona_id: guarded_prior_rejection_doctor
+constraints:
+  max_turns: 10
+success_criteria:
+  - acknowledges_previous_context
+  - earns_permission_for_short_update
+failure_patterns:
+  - ignores_prior_rejection_history
+  - repeats_old_message_without_new_relevance
+  - becomes_defensive_when_doctor_pushes_back
+playbook:
+  learning_objective: Re-engage after a previous rejection by acknowledging history and providing a "new information" hook.
+  target_subskills: [opening, profiling, need_discovery]
+  expected_flow:
+    - MR acknowledges the previous visit where the doctor declined the product.
+    - MR asks for permission to share a specific *new* update or study.
+    - MR probes if anything has changed in the doctor's patient mix or challenges.
+  key_discovery_questions:
+    - Since we last spoke, have you encountered any patients with [Specific Profile]?
+  acceptable_evidence_moves:
+    - "I know you were concerned about X last time. We've just released new data addressing that."
+    - "I respect your previous decision. I'm here today because we have a new guideline update."
+  common_failure_patterns:
+    - Pretending the previous rejection never happened.
+    - Arguing about the previous decision instead of moving forward.
+    - Failing to provide a clear "new information" hook to justify the revisit.
+  recovery_moves:
+    - If the doctor is hostile, immediately acknowledge the hostility, apologize for the intrusion, and ask for a future "reset" visit.
+  completion_signals:
+    - Doctor allows the MR to present the new information.
+  positive_example_moves:
+    - "Last time you mentioned that the cost was a barrier. I have some news regarding our new patient support program."
+  negative_example_moves:
+    - "I'm back to talk about the same thing as last month. I think you made a mistake not listening then."

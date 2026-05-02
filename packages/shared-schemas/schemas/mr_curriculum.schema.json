@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MrCurriculum",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["curriculum_id", "version", "title", "modules"],
+  "properties": {
+    "curriculum_id": { "type": "string", "minLength": 1 },
+    "version": { "type": "integer", "minimum": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "modules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "title", "description", "stages"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "stages": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "title",
+                "description",
+                "scenario_ids",
+                "target_subskills",
+                "prerequisites",
+                "recommended_repetition",
+                "completion_criteria"
+              ],
+              "properties": {
+                "id": { "type": "string", "minLength": 1 },
+                "title": { "type": "string", "minLength": 1 },
+                "description": { "type": "string", "minLength": 1 },
+                "scenario_ids": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "target_subskills": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "prerequisites": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "recommended_repetition": { "type": "integer", "minimum": 1 },
+                "completion_criteria": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "required_scenario_ids",
+                    "min_completed_sessions",
+                    "min_average_overall_score",
+                    "min_target_subskill_average"
+                  ],
+                  "properties": {
+                    "required_scenario_ids": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": { "type": "string", "minLength": 1 }
+                    },
+                    "min_completed_sessions": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "min_average_overall_score": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100
+                    },
+                    "min_target_subskill_average": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 5
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

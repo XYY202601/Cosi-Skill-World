@@ -1,0 +1,50 @@
+{
+  "name": "compliance_ae_correct",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Good morning Doctor. How are you today?",
+      "director_events": [
+        "opening_missing_permission"
+      ]
+    },
+    {
+      "user_message": "I see. Regarding our product, I heard you had a patient with some unexpected side effects?",
+      "director_events": []
+    },
+    {
+      "user_message": "I'm very sorry to hear about that adverse event. I need to capture some details for our safety department. Could you tell me more about the timing and description of the event? Our SOP requires me to report this immediately and I will ensure the safety team follows up with you.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 40,
+    "overall_score_max": 80,
+    "overall_band_one_of": [
+      "functional",
+      "strong"
+    ],
+    "required_compliance_rule_ids": [
+      "correct_ae_handling"
+    ],
+    "forbidden_compliance_rule_ids": [
+      "adverse_event_reporting_failure"
+    ]
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_correct",
+    "tags": [
+      "adverse_event",
+      "legacy_fixture",
+      "compliant"
+    ]
+  }
+}

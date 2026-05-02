@@ -1,0 +1,187 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  python-contracts:
+    name: Python Contracts And Fixtures
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python packages
+        run: |
+          python -m venv .venv
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install \
+            -e packages/skill-registry \
+            -e packages/prompt-builder \
+            -e apps/mr-visit-jp-runtime \
+            -e apps/gp-visit-jp-runtime \
+            -e apps/hermes-orchestrator
+
+      - name: Reference import guard
+        run: scripts/check-no-reference-imports.sh
+
+      - name: Shell syntax
+        run: bash -n scripts/*.sh
+
+      - name: Validate domain content
+        run: make validate-content
+
+      - name: Run Python tests
+        run: |
+          ./.venv/bin/python -m pytest \
+            apps/mr-visit-jp-runtime/tests \
+            apps/hermes-orchestrator/tests \
+            apps/gp-visit-jp-runtime/tests \
+            tests/integration \
+            packages/prompt-builder/tests \
+            packages/evaluation-core/tests \
+            packages/skill-registry/tests
+
+      - name: Run MR offline fixture gate
+        run: make evaluate-mr-visit-jp-fixtures FORMAT=json
+
+  mr-runtime-sql:
+    name: MR Runtime SQL Mode
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: cosi
+          POSTGRES_USER: cosi
+          POSTGRES_PASSWORD: cosi
+        ports:
+          - 5439:5432
+        options: >-
+          --health-cmd "pg_isready -U cosi -d cosi"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 12
+    env:
+      MR_RUNTIME_PERSISTENCE_MODE: sql
+      MR_RUNTIME_SQLALCHEMY_URL: postgresql+psycopg://cosi:cosi@127.0.0.1:5439/cosi
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python packages
+        run: |
+          python -m venv .venv
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install -e apps/mr-visit-jp-runtime
+
+      - name: Run Alembic migrations
+        run: ./.venv/bin/alembic -c apps/mr-visit-jp-runtime/alembic.ini upgrade head
+
+      - name: Run SQL-mode runtime tests
+        run: ./.venv/bin/python -m pytest apps/mr-visit-jp-runtime/tests
+
+  web:
+    name: Web Lint Typecheck Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Typecheck
+        run: pnpm typecheck
+
+      - name: Build
+        run: pnpm build
+
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install Python packages
+        run: |
+          python -m venv .venv
+          ./.venv/bin/python -m pip install --upgrade pip
+          ./.venv/bin/python -m pip install \
+            -e packages/skill-registry \
+            -e packages/prompt-builder \
+            -e apps/mr-visit-jp-runtime \
+            -e apps/gp-visit-jp-runtime \
+            -e apps/hermes-orchestrator
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "pnpm"
+
+      - name: Enable Corepack
+        run: corepack enable
+
+      - name: Install JS dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Create .env
+        run: cp .env.example .env
+
+      - name: Install Playwright browsers
+        run: pnpm e2e:install
+
+      - name: Run e2e tests
+        run: pnpm e2e
+        env:
+          AUTH_MODE: mock
+          SESSION_SECRET: ci-test-secret
+          MR_RUNTIME_AUTH_MODE: disabled
+          MR_RUNTIME_MODEL_MODE: mock
+          MR_RUNTIME_DEMO_SEED_MODE: manual
+          MR_RUNTIME_PERSISTENCE_MODE: file
+
+      - name: Upload test artifacts
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-artifacts
+          path: |
+            .test-results/
+            .playwright-report/
+          retention-days: 7

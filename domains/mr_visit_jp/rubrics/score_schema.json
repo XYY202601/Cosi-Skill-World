@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MrVisitJpScoreContract",
+  "type": "object",
+  "required": ["rubric_version", "subskills", "overall_score", "overall_band"],
+  "properties": {
+    "rubric_version": {
+      "type": "integer",
+      "const": 1
+    },
+    "subskills": {
+      "type": "object",
+      "required": [
+        "preparation",
+        "opening",
+        "profiling",
+        "scientific_delivery",
+        "need_discovery",
+        "objection_handling",
+        "closing_followup"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "preparation": { "$ref": "#/$defs/subskillScore" },
+        "opening": { "$ref": "#/$defs/subskillScore" },
+        "profiling": { "$ref": "#/$defs/subskillScore" },
+        "scientific_delivery": { "$ref": "#/$defs/subskillScore" },
+        "need_discovery": { "$ref": "#/$defs/subskillScore" },
+        "objection_handling": { "$ref": "#/$defs/subskillScore" },
+        "closing_followup": { "$ref": "#/$defs/subskillScore" }
+      }
+    },
+    "overall_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "overall_band": {
+      "type": "string",
+      "enum": ["critical_gap", "emerging", "functional", "strong", "excellent"]
+    },
+    "strengths": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/subskillId" },
+      "uniqueItems": true,
+      "maxItems": 3
+    },
+    "priority_subskills": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/subskillId" },
+      "uniqueItems": true,
+      "maxItems": 3
+    }
+  },
+  "$defs": {
+    "subskillId": {
+      "type": "string",
+      "enum": [
+        "preparation",
+        "opening",
+        "profiling",
+        "scientific_delivery",
+        "need_discovery",
+        "objection_handling",
+        "closing_followup"
+      ]
+    },
+    "evidenceItem": {
+      "oneOf": [
+        {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 280
+        },
+        {
+          "type": "object",
+          "required": ["summary"],
+          "properties": {
+            "summary": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 280
+            },
+            "turn_index": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "speaker": {
+              "type": "string",
+              "enum": ["learner", "doctor", "system"]
+            },
+            "excerpt": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 280
+            },
+            "tags": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 64
+              },
+              "maxItems": 4,
+              "uniqueItems": true
+            }
+          },
+          "additionalProperties": false
+        }
+      ]
+    },
+    "subskillScore": {
+      "type": "object",
+      "required": ["score", "evidence"],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "evidence": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 3,
+          "items": { "$ref": "#/$defs/evidenceItem" }
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

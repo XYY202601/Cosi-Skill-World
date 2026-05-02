@@ -1,0 +1,44 @@
+{
+  "name": "h3_medium_partial_competitor_reframe",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Compared with competitors, we may perform better, but can I first ask what criteria matter most to you?",
+      "director_events": []
+    },
+    {
+      "user_message": "I will limit this to one criterion you prioritize and one relevant data point.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 73,
+    "overall_score_max": 77,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "skeptical_doctor_competitor_pressure"
+    ],
+    "compliance_case": "overclaim_and_competitor",
+    "tags": [
+      "h3",
+      "medium",
+      "competitor",
+      "partial_reframe"
+    ]
+  }
+}

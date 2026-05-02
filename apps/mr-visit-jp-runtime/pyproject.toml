@@ -1,0 +1,19 @@
+[project]
+name = "mr-visit-jp-runtime"
+version = "0.1.0"
+description = "Domain runtime for Japanese MR visit training"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn>=0.30.0",
+  "pydantic>=2.8.0",
+  "pyyaml>=6.0.2",
+  "jsonschema>=4.23.0",
+  "psycopg[binary]>=3.2.0",
+  "sqlmodel>=0.0.22",
+  "alembic>=1.13.0",
+  "python-multipart>=0.0.9"
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "../../packages/prompt-builder/src"]

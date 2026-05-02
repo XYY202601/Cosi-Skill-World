@@ -1,0 +1,14 @@
+[project]
+name = "cosi-skill-world"
+version = "0.1.0"
+description = "AI-native skill training platform"
+requires-python = ">=3.11"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+pythonpath = [".", "apps/mr-visit-jp-runtime/src", "apps/hermes-orchestrator/src", "packages/skill-registry/src", "packages/prompt-builder/src", "packages/evaluation-core/src"]
+addopts = "-q"
+norecursedirs = ["references", "node_modules", ".git", ".next", ".venv"]

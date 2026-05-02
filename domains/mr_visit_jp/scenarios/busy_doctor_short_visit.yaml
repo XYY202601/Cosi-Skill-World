@@ -1,0 +1,40 @@
+id: busy_doctor_short_visit
+title: Busy Doctor, Short Visit
+difficulty: easy
+focus_subskills: [opening, scientific_delivery, closing_followup]
+doctor_persona_id: busy_clinician_neutral
+constraints:
+  max_turns: 8
+success_criteria:
+  - clear_opening_in_30_seconds
+  - one_relevant_value_message
+  - concrete_followup_commitment
+failure_patterns:
+  - loses_attention_with_long_opening
+  - overwhelms_with_excess_detail
+  - exits_without_clear_next_step
+playbook:
+  learning_objective: Master high-impact opening and concise value delivery under time pressure.
+  target_subskills: [opening, scientific_delivery, closing_followup]
+  expected_flow:
+    - Concise opening within 1-2 turns.
+    - Delivery of one key scientific value message.
+    - Secure a clear follow-up appointment or commitment before the doctor leaves.
+  key_discovery_questions:
+    - How much time do you have today?
+    - Are you currently seeing patients with [Condition]?
+  acceptable_evidence_moves:
+    - Mentions clinical trial X results briefly.
+    - Asks for a 5-minute follow-up next Tuesday.
+  common_failure_patterns:
+    - Spending more than 3 turns on a generic opening.
+    - Trying to show 3+ detail slides.
+    - Failing to ask for a follow-up commitment before time runs out.
+  recovery_moves:
+    - If the doctor looks at their watch, pivot immediately to the closing ask.
+  completion_signals:
+    - Doctor agrees to a specific follow-up time.
+  positive_example_moves:
+    - "I know you're busy, so I'll be brief: Trial X showed a 20% improvement in Y."
+  negative_example_moves:
+    - "Let me start by walking you through the 20-year history of our company's research..."

@@ -1,0 +1,55 @@
+{
+  "name": "good_balanced_visit",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "May I take one minute? Could you share your current patient profile and decision criteria?",
+      "director_events": []
+    },
+    {
+      "user_message": "I will keep this evidence based, one study shows practical benefit with clear limitations.",
+      "director_events": []
+    },
+    {
+      "user_message": "Based on your needs, would a focused follow-up discussion next week be a useful next step?",
+      "director_events": []
+    },
+    {
+      "user_message": "Thank you. I will send a short summary and follow up with the agreed next step.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 80,
+    "overall_score_max": 100,
+    "overall_band_one_of": [
+      "strong",
+      "excellent"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit",
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "balanced_visit",
+      "permission_based",
+      "evidence_linked",
+      "clear_close"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "name": "h3_bad_rejection_repeat_same_message",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "profiling",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "As I said last time, this product is very good and should be used broadly.",
+      "director_events": [
+        "prior_rejection_not_acknowledged"
+      ]
+    },
+    {
+      "user_message": "It is still the same value proposition and you should reconsider.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 70,
+    "overall_score_max": 74,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "revisit_after_prior_rejection"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "bad",
+      "revisit",
+      "repeat_message"
+    ]
+  }
+}

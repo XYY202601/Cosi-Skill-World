@@ -1,0 +1,50 @@
+{
+  "name": "h3_good_permission_opening_ja",
+  "finish_reason": "director_signaled_completion",
+  "scenario_focus_subskills": [
+    "opening",
+    "need_discovery",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "30秒だけお時間よろしいでしょうか。先生の外来で該当しやすい患者像に絞ってお話しします。",
+      "director_events": []
+    },
+    {
+      "user_message": "その患者群では主要評価項目に改善があり、安全性は既知の範囲でした。",
+      "director_events": []
+    },
+    {
+      "user_message": "来週、先生の判断基準に沿って5分だけ再確認させていただけますか。",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 71,
+    "overall_score_max": 75,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "busy_doctor_short_visit"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "good",
+      "japanese",
+      "permission",
+      "closing"
+    ]
+  }
+}

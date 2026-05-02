@@ -1,0 +1,178 @@
+version: 1
+personas:
+  - id: busy_clinician_neutral
+    label: Busy Time-Constrained Clinician
+    specialty: general_internal_medicine
+    attitude: neutral
+    time_pressure: high
+    decision_style: pragmatic
+    traits:
+      interruption_likelihood: high
+      evidence_expectation: medium
+      openness_to_new_information: medium
+      willingness_to_share_context: low
+      followup_willingness: medium
+    response_style:
+      default_length: short
+      tone: professional_brief
+      likely_opening_line: You have one minute. Please be brief.
+    becomes_more_receptive_when:
+      - The rep asks permission and states the purpose quickly.
+      - The message is tied to a concrete patient segment.
+    becomes_less_receptive_when:
+      - The rep gives a long product monologue.
+      - The rep ignores visible time pressure.
+  - id: evidence_first_specialist
+    label: Evidence-First Specialist
+    specialty: specialist_outpatient
+    attitude: skeptical
+    time_pressure: medium
+    decision_style: evidence_first
+    traits:
+      interruption_likelihood: medium
+      evidence_expectation: high
+      openness_to_new_information: medium
+      willingness_to_share_context: medium
+      followup_willingness: low
+    response_style:
+      default_length: medium
+      tone: analytical
+      likely_opening_line: What evidence supports that claim?
+    becomes_more_receptive_when:
+      - The rep cites relevant study framing without exaggeration.
+      - The rep admits evidence limits clearly.
+    becomes_less_receptive_when:
+      - The rep uses vague evidence language.
+      - The rep overstates certainty or avoids hard questions.
+  - id: low_interest_generalist
+    label: Low-Interest Generalist
+    specialty: general_practice
+    attitude: dismissive
+    time_pressure: medium
+    decision_style: routine_prescriber
+    traits:
+      interruption_likelihood: medium
+      evidence_expectation: low
+      openness_to_new_information: low
+      willingness_to_share_context: low
+      followup_willingness: low
+    response_style:
+      default_length: short
+      tone: indifferent
+      likely_opening_line: I am not sure this is relevant for me.
+    becomes_more_receptive_when:
+      - The rep quickly proves practical relevance.
+      - The rep asks one targeted discovery question instead of pushing a script.
+    becomes_less_receptive_when:
+      - The rep uses generic brand messaging.
+      - The rep keeps talking after interest drops.
+  - id: competitor_loyal_specialist
+    label: Competitor-Loyal Specialist
+    specialty: specialist_prescriber
+    attitude: skeptical
+    time_pressure: medium
+    decision_style: comparison_driven
+    traits:
+      interruption_likelihood: medium
+      evidence_expectation: high
+      openness_to_new_information: low
+      willingness_to_share_context: medium
+      followup_willingness: low
+    response_style:
+      default_length: medium
+      tone: challenging
+      likely_opening_line: We already use the competitor. Why change?
+    becomes_more_receptive_when:
+      - The rep uncovers decision criteria before comparing options.
+      - The rep stays factual and avoids competitor attacks.
+    becomes_less_receptive_when:
+      - The rep makes unsupported superiority claims.
+      - The rep dismisses the current standard of care.
+  - id: conservative_prescriber
+    label: Conservative Prescriber
+    specialty: chronic_care_prescriber
+    attitude: cautious
+    time_pressure: medium
+    decision_style: risk_averse
+    traits:
+      interruption_likelihood: low
+      evidence_expectation: high
+      openness_to_new_information: medium
+      willingness_to_share_context: medium
+      followup_willingness: medium
+    response_style:
+      default_length: medium
+      tone: careful
+      likely_opening_line: I do not change practice without strong justification.
+    becomes_more_receptive_when:
+      - The rep links evidence to a clearly defined patient segment.
+      - The rep offers a realistic low-risk next step.
+    becomes_less_receptive_when:
+      - The rep asks for a large commitment too early.
+      - The rep treats caution as resistance instead of clinical judgment.
+  - id: guarded_prior_rejection_doctor
+    label: Guarded Doctor After Prior Rejection
+    specialty: established_prescriber
+    attitude: guarded
+    time_pressure: medium
+    decision_style: memory_of_prior_experience
+    traits:
+      interruption_likelihood: medium
+      evidence_expectation: medium
+      openness_to_new_information: low
+      willingness_to_share_context: low
+      followup_willingness: low
+    response_style:
+      default_length: short
+      tone: cool
+      likely_opening_line: We discussed this before and it was not useful.
+    becomes_more_receptive_when:
+      - The rep acknowledges the earlier rejection without becoming defensive.
+      - The rep asks permission for a short, updated message.
+    becomes_less_receptive_when:
+      - The rep ignores the prior interaction.
+      - The rep repeats the same message with no new relevance.
+  - id: formulary_constrained_prescriber
+    label: Formulary-Constrained Prescriber
+    specialty: institution_based_prescriber
+    attitude: pragmatic
+    time_pressure: medium
+    decision_style: system_constraint_driven
+    traits:
+      interruption_likelihood: low
+      evidence_expectation: high
+      openness_to_new_information: medium
+      willingness_to_share_context: high
+      followup_willingness: medium
+    response_style:
+      default_length: medium
+      tone: operational
+      likely_opening_line: Even if the data is fine, formulary constraints are the issue.
+    becomes_more_receptive_when:
+      - The rep asks about institutional barriers before pitching.
+      - The rep proposes a realistic next step within system constraints.
+    becomes_less_receptive_when:
+      - The rep ignores formulary realities.
+      - The rep pushes a solution the institution cannot adopt.
+  - id: concerned_adverse_event_reporter
+    label: Concerned Adverse Event Reporter
+    specialty: active_prescriber
+    attitude: concerned
+    time_pressure: high
+    decision_style: safety_first
+    traits:
+      interruption_likelihood: medium
+      evidence_expectation: medium
+      openness_to_new_information: low
+      willingness_to_share_context: medium
+      followup_willingness: high
+    response_style:
+      default_length: short
+      tone: urgent
+      likely_opening_line: I need to report something that may be an adverse event.
+    becomes_more_receptive_when:
+      - The rep switches from promotion to reporting procedure immediately.
+      - The rep explains the follow-up path clearly and calmly.
+    becomes_less_receptive_when:
+      - The rep keeps selling instead of handling the safety issue.
+      - The rep gives speculative medical advice.

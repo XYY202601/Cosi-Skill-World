@@ -1,0 +1,154 @@
+{
+  "current_scenario_id": "busy_doctor_short_visit",
+  "current_scenario_difficulty": "easy",
+  "review": {
+    "overall_score": 58,
+    "priority_subskills": [
+      "opening",
+      "need_discovery"
+    ],
+    "diagnosis": {
+      "primary": [
+        {
+          "id": "synthetic_gap",
+          "summary": "Need discovery stays shallow after a weak opener",
+          "recommendation_focus": [
+            "opening",
+            "need_discovery"
+          ],
+          "related_subskills": [
+            "opening",
+            "need_discovery"
+          ]
+        }
+      ]
+    },
+    "compliance_flags": [],
+    "subskills": {
+      "opening": {
+        "score": 2
+      },
+      "profiling": {
+        "score": 3
+      },
+      "need_discovery": {
+        "score": 2
+      },
+      "scientific_delivery": {
+        "score": 3
+      },
+      "objection_handling": {
+        "score": 3
+      },
+      "closing_followup": {
+        "score": 3
+      }
+    }
+  },
+  "recent_history": [
+    {
+      "session_id": "sess_repeat_001",
+      "scenario_id": "busy_doctor_short_visit",
+      "weak_subskills": [
+        "opening",
+        "need_discovery"
+      ],
+      "timestamp": "2026-04-20T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_repeat_002",
+      "scenario_id": "skeptical_doctor_competitor_pressure",
+      "weak_subskills": [
+        "opening",
+        "need_discovery"
+      ],
+      "timestamp": "2026-04-21T00:00:00+00:00"
+    },
+    {
+      "session_id": "sess_repeat_003",
+      "scenario_id": "low_interest_doctor_intro_fail",
+      "weak_subskills": [
+        "opening",
+        "need_discovery"
+      ],
+      "timestamp": "2026-04-22T00:00:00+00:00"
+    }
+  ],
+  "subskill_trends": {
+    "opening": "stable",
+    "profiling": "stable",
+    "need_discovery": "stable",
+    "scientific_delivery": "stable",
+    "objection_handling": "stable",
+    "closing_followup": "stable"
+  },
+  "fallback_subskills": [
+    "opening",
+    "need_discovery"
+  ],
+  "subskill_signals": {
+    "opening": {
+      "trend": "stable",
+      "rolling_average": 2.4,
+      "history_count": 4,
+      "last_score": 2
+    },
+    "need_discovery": {
+      "trend": "stable",
+      "rolling_average": 2.3,
+      "history_count": 4,
+      "last_score": 2
+    },
+    "profiling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "scientific_delivery": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "objection_handling": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    },
+    "closing_followup": {
+      "trend": "stable",
+      "rolling_average": 3.0,
+      "history_count": 2,
+      "last_score": 3
+    }
+  },
+  "expected": {
+    "dominant_cluster": {
+      "subskills": [
+        "need_discovery",
+        "opening"
+      ],
+      "occurrences": 3
+    },
+    "recommendation_ids": [
+      "revisit_after_prior_rejection",
+      "low_interest_doctor_intro_fail",
+      "new_product_adoption_barrier"
+    ],
+    "top_target_subskills": [
+      "opening",
+      "need_discovery"
+    ],
+    "top_difficulty": "medium",
+    "forbidden_top_ids": [
+      "low_interest_doctor_intro_fail"
+    ],
+    "top_reason_fragments": [
+      "recurring",
+      "need discovery stays shallow after a weak opener",
+      "raises difficulty"
+    ]
+  }
+}

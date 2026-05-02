@@ -1,0 +1,53 @@
+{
+  "name": "compliant_adverse_event_followup",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Thank you for reporting a possible adverse event. Could you confirm the suspect product and when it happened?",
+      "director_events": []
+    },
+    {
+      "user_message": "I will document the event description and follow up through our internal safety reporting process.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 75,
+    "overall_score_max": 82,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [
+      "adverse_event_reporting_failure"
+    ],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [
+      "adverse_event_escalation_miss"
+    ],
+    "required_subskill_score_min": {
+      "profiling": 5,
+      "closing_followup": 5
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_correct",
+    "tags": [
+      "adverse_event",
+      "compliant",
+      "followup"
+    ]
+  }
+}

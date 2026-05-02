@@ -1,0 +1,49 @@
+{
+  "name": "noncompliant_adverse_event_escalation_miss",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Thank you for mentioning the adverse event. The benefit is still strong and efficacy can improve outcomes.",
+      "director_events": []
+    },
+    {
+      "user_message": "We should keep discussing the product value instead of the case details.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 10,
+    "overall_score_max": 40,
+    "overall_band_one_of": [
+      "critical_gap"
+    ],
+    "required_compliance_rule_ids": [
+      "adverse_event_reporting_failure"
+    ],
+    "required_compliance_severities": [
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "adverse_event_escalation_miss"
+    ],
+    "required_subskill_score_max": {
+      "closing_followup": 3
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_failure",
+    "tags": [
+      "adverse_event",
+      "noncompliant",
+      "escalation_miss"
+    ]
+  }
+}

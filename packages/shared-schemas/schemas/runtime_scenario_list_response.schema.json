@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeScenarioListResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["domain_id", "scenario_count", "scenarios"],
+  "properties": {
+    "domain_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title",
+          "difficulty",
+          "focus_subskills",
+          "doctor_persona_id",
+          "persona_label",
+          "persona_attitude",
+          "persona_time_pressure",
+          "persona_specialty",
+          "max_turns",
+          "success_criteria",
+          "failure_patterns"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "title": { "type": "string", "minLength": 1 },
+          "difficulty": {
+            "type": "string",
+            "enum": ["easy", "medium", "hard"]
+          },
+          "focus_subskills": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "doctor_persona_id": { "type": "string", "minLength": 1 },
+          "persona_label": { "type": "string", "minLength": 1 },
+          "persona_attitude": { "type": "string", "minLength": 1 },
+          "persona_time_pressure": { "type": "string", "minLength": 1 },
+          "persona_specialty": { "type": "string", "minLength": 1 },
+          "max_turns": { "type": "integer", "minimum": 1 },
+          "success_criteria": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "failure_patterns": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

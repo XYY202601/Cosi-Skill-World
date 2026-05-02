@@ -1,0 +1,45 @@
+{
+  "name": "h3_medium_revisit_partial_newness",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "opening",
+    "profiling",
+    "need_discovery"
+  ],
+  "turns": [
+    {
+      "user_message": "I remember last time you were not convinced. I can share one update quickly.",
+      "director_events": []
+    },
+    {
+      "user_message": "Could you tell me whether your target population has shifted since then?",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 76,
+    "overall_score_max": 80,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "revisit_after_prior_rejection"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "medium",
+      "revisit",
+      "partial_newness"
+    ]
+  }
+}

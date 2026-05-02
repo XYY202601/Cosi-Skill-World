@@ -1,0 +1,160 @@
+id: mr_visit_jp
+version: 0.1.0
+name: Japanese MR Visit Training
+routing:
+  default_for_unscoped_routes: true
+ui:
+  category: clinical_training
+  default_label: Japanese MR Visit Training
+marketplace:
+  title: Japanese MR Visit Training
+  summary: Practice medical representative visits with Japanese doctor personas. Covers preparation, opening, profiling, scientific delivery, needs discovery, objection handling, and closing follow-up.
+  provider: COSI Platform
+  locales:
+    - ja
+    - en
+  modality: text
+  maturity: stable
+  compatibility:
+    min_runtime_version: 0.1.0
+  privacy:
+    data_notes: Session transcripts contain simulated patient and doctor interactions. Learner performance data (scores, diagnosis, compliance flags) is stored per-organization and visible to assigned supervisors and organization admins.
+runtime:
+  app: mr-visit-jp-runtime
+  base_path: /v1
+  health_path: /healthz
+  base_url_env: MR_VISIT_JP_RUNTIME_BASE
+capabilities:
+  - id: scenario_catalog
+    name: Scenario Catalog
+    description: List scenarios and evaluation gates for the MR training domain.
+    actions:
+      - list_scenarios
+      - get_evaluation_gates
+  - id: practice_session
+    name: Practice Session
+    description: Start, inspect, progress, and finish a live MR practice session.
+    actions:
+      - start_session
+      - get_session
+      - send_turn
+      - finish_session
+  - id: review
+    name: Review
+    description: Read finalized review artifacts and replay session event history.
+    actions:
+      - get_review
+      - get_session_events
+  - id: progress
+    name: Progress
+    description: Read learner progress, recommendations, and weakness clusters.
+    actions:
+      - get_progress_snapshot
+  - id: organization_reporting
+    name: Organization Reporting
+    description: Read supervisor-facing aggregate reports for this skill.
+    actions:
+      - get_organization_reports
+actions:
+  - id: list_scenarios
+    capability: scenario_catalog
+    method: GET
+    path: /scenarios
+    expose:
+      - root
+      - skill
+    description: List available scenarios for this skill.
+  - id: get_evaluation_gates
+    capability: scenario_catalog
+    method: GET
+    path: /evaluation-gates
+    expose:
+      - root
+      - skill
+    description: Read evaluation gate status for this skill.
+  - id: start_session
+    capability: practice_session
+    method: POST
+    path: /sessions/start
+    expose:
+      - root
+      - skill
+    description: Start a new learner session for a scenario.
+  - id: get_session
+    capability: practice_session
+    method: GET
+    path: /sessions/{session_id}
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read current session state for an active or finalized session.
+  - id: send_turn
+    capability: practice_session
+    method: POST
+    path: /sessions/{session_id}/turn
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Send one learner turn into the domain runtime.
+  - id: finish_session
+    capability: practice_session
+    method: POST
+    path: /sessions/{session_id}/finish
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Finalize the session and generate review plus progress updates.
+  - id: get_review
+    capability: review
+    method: GET
+    path: /sessions/{session_id}/review
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read the finalized review for a session.
+  - id: get_session_events
+    capability: review
+    method: GET
+    path: /sessions/{session_id}/events
+    expose:
+      - root
+      - skill
+    path_params:
+      - session_id
+    description: Read the persisted event stream for a session.
+  - id: get_progress_snapshot
+    capability: progress
+    method: GET
+    path: /learners/{learner_id}/progress
+    expose:
+      - root
+      - skill
+    path_params:
+      - learner_id
+    description: Read the learner progress snapshot for this skill.
+  - id: get_organization_reports
+    capability: organization_reporting
+    method: GET
+    path: /organizations/{organization_id}/reports
+    expose:
+      - root
+      - skill
+    path_params:
+      - organization_id
+    description: Read organization-level supervisor reports for this skill.
+subskills:
+  - preparation
+  - opening
+  - profiling
+  - scientific_delivery
+  - need_discovery
+  - objection_handling
+  - closing_followup

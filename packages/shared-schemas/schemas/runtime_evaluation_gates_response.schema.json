@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RuntimeEvaluationGatesResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["domain_id", "default_profile_id", "rollout", "offline_dataset", "offline_gates", "online_gates"],
+  "properties": {
+    "domain_id": { "type": "string", "minLength": 1 },
+    "default_profile_id": { "type": "string", "minLength": 1 },
+    "rollout": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "requested",
+        "effective",
+        "stable_profile_id",
+        "allow_blocked_rollout",
+        "checks"
+      ],
+      "properties": {
+        "status": { "type": "string", "minLength": 1 },
+        "requested": { "$ref": "#/$defs/promptContextSummary" },
+        "effective": { "$ref": "#/$defs/promptContextSummary" },
+        "stable_profile_id": { "type": "string", "minLength": 1 },
+        "allow_blocked_rollout": { "type": "boolean" },
+        "checks": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/evaluationCheck" }
+        }
+      }
+    },
+    "offline_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "profile_id",
+          "status",
+          "fixture_pass_rate",
+          "fixture_results",
+          "contract_versions",
+          "output_requirement_counts",
+          "checks"
+        ],
+        "properties": {
+          "profile_id": { "type": "string", "minLength": 1 },
+          "status": { "type": "string", "minLength": 1 },
+          "fixture_pass_rate": { "type": "number", "minimum": 0, "maximum": 1 },
+          "fixture_results": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "fixture_name",
+                "fixture_path",
+                "bucket",
+                "scenario_ids",
+                "focus_subskills",
+                "finish_reason",
+                "compliance_case",
+                "tags",
+                "passed",
+                "overall_score",
+                "overall_band"
+              ],
+              "properties": {
+                "fixture_name": { "type": "string", "minLength": 1 },
+                "fixture_path": { "type": "string", "minLength": 1 },
+                "bucket": { "type": "string", "minLength": 1 },
+                "scenario_ids": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "focus_subskills": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "finish_reason": { "type": "string", "minLength": 1 },
+                "compliance_case": { "type": "string", "minLength": 1 },
+                "tags": {
+                  "type": "array",
+                  "items": { "type": "string", "minLength": 1 }
+                },
+                "passed": { "type": "boolean" },
+                "overall_score": { "type": "integer", "minimum": 0, "maximum": 100 },
+                "overall_band": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "contract_versions": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "output_requirement_counts": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "checks": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/evaluationCheck" }
+          }
+        }
+      }
+    },
+    "offline_dataset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixture_schema_version",
+        "fixture_count",
+        "fixtures_by_bucket",
+        "coverage"
+      ],
+      "properties": {
+        "fixture_schema_version": { "type": "integer", "minimum": 1 },
+        "fixture_count": { "type": "integer", "minimum": 1 },
+        "fixtures_by_bucket": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "coverage": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["scenarios", "subskills", "compliance_cases", "finish_reasons"],
+          "properties": {
+            "scenarios": { "$ref": "#/$defs/coverageDimension" },
+            "subskills": { "$ref": "#/$defs/coverageDimension" },
+            "compliance_cases": { "$ref": "#/$defs/coverageDimension" },
+            "finish_reasons": { "$ref": "#/$defs/coverageDimension" }
+          }
+        }
+      }
+    },
+    "online_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "profile_id",
+          "status",
+          "sample_size",
+          "metrics",
+          "thresholds",
+          "checks",
+          "updated_at"
+        ],
+        "properties": {
+          "profile_id": { "type": "string", "minLength": 1 },
+          "experiment_id": {
+            "type": ["string", "null"]
+          },
+          "status": { "type": "string", "minLength": 1 },
+          "sample_size": { "type": "integer", "minimum": 0 },
+          "metrics": { "type": "object" },
+          "thresholds": { "type": "object" },
+          "checks": {
+            "type": "array",
+            "items": { "$ref": "#/$defs/evaluationCheck" }
+          },
+          "updated_at": { "type": "string" }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "evaluationCheck": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "passed", "detail"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "passed": { "type": "boolean" },
+        "detail": { "type": "string", "minLength": 1 }
+      }
+    },
+    "coverageDimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["covered", "missing", "counts"],
+      "properties": {
+        "covered": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "missing": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "counts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "promptContextSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "flags", "contracts"],
+      "properties": {
+        "profile_id": { "type": "string", "minLength": 1 },
+        "experiment_id": {
+          "type": ["string", "null"]
+        },
+        "flags": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "contracts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": ["version"],
+            "properties": {
+              "version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}

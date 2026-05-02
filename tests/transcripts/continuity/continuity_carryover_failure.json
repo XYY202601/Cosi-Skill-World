@@ -1,0 +1,49 @@
+{
+  "name": "continuity_carryover_failure",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "scientific_delivery"
+  ],
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "profiling"
+    ],
+    "suggested_focus_subskills": [
+      "profiling",
+      "scientific_delivery"
+    ]
+  },
+  "turns": [
+    {
+      "user_message": "Good morning. I'm here to talk about our new product.",
+      "director_events": [
+        "carryover_profiling_gap"
+      ]
+    }
+  ],
+  "expected": {
+    "overall_score_min": 10,
+    "overall_score_max": 60,
+    "overall_band_one_of": [
+      "critical_gap",
+      "emerging"
+    ],
+    "required_subskill_score_max": {
+      "profiling": 2
+    },
+    "forbidden_diagnosis_ids": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "revisit_after_prior_rejection"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "continuity",
+      "carryover_gap",
+      "profiling"
+    ]
+  }
+}

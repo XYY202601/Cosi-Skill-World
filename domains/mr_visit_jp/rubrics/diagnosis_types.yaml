@@ -1,0 +1,76 @@
+version: 1
+selection_rules:
+  max_primary_diagnoses: 3
+  allow_mixed_types: true
+severity_levels:
+  - low
+  - medium
+  - high
+  - critical
+diagnosis_types:
+  - id: opening_not_permission_based
+    kind: skill_gap
+    default_severity: medium
+    related_subskills: [opening]
+    summary: The visit starts without permission, relevance, or a concise framing.
+    recommendation_focus: [opening]
+  - id: insufficient_context_profiling
+    kind: skill_gap
+    default_severity: medium
+    related_subskills: [preparation, profiling]
+    summary: The rep does not surface enough doctor context, patient mix, or decision constraints.
+    recommendation_focus: [profiling, need_discovery]
+  - id: unclear_scientific_delivery
+    kind: skill_gap
+    default_severity: medium
+    related_subskills: [scientific_delivery]
+    summary: Clinical evidence is delivered with low clarity, weak relevance, or poor structure.
+    recommendation_focus: [scientific_delivery]
+  - id: insufficient_need_discovery
+    kind: skill_gap
+    default_severity: high
+    related_subskills: [need_discovery, profiling]
+    summary: The rep fails to identify and confirm a meaningful unmet need before pitching.
+    recommendation_focus: [need_discovery, profiling]
+  - id: objection_response_gap
+    kind: skill_gap
+    default_severity: medium
+    related_subskills: [objection_handling, scientific_delivery]
+    summary: Objections are answered defensively, vaguely, or without relevant supporting evidence.
+    recommendation_focus: [objection_handling]
+  - id: weak_close_or_followup
+    kind: skill_gap
+    default_severity: medium
+    related_subskills: [closing_followup]
+    summary: The visit ends without a realistic next step, confirmation, or compliant follow-up path.
+    recommendation_focus: [closing_followup]
+  - id: poor_time_management
+    kind: communication_gap
+    default_severity: medium
+    related_subskills: [opening, scientific_delivery, closing_followup]
+    summary: The rep uses limited visit time poorly and fails to prioritize the core message.
+    recommendation_focus: [opening, scientific_delivery]
+  - id: low_trust_or_rapport
+    kind: communication_gap
+    default_severity: medium
+    related_subskills: [opening, profiling]
+    summary: The interaction does not build enough trust, empathy, or professional credibility.
+    recommendation_focus: [opening, profiling]
+  - id: fair_balance_omission
+    kind: compliance_risk
+    default_severity: high
+    related_subskills: [scientific_delivery]
+    summary: Benefits are presented without adequate balance, limitation framing, or risk context.
+    recommendation_focus: [scientific_delivery]
+  - id: overclaim_or_off_label_risk
+    kind: compliance_risk
+    default_severity: critical
+    related_subskills: [scientific_delivery, objection_handling]
+    summary: The rep makes unsupported, exaggerated, or off-label claims.
+    recommendation_focus: [scientific_delivery, objection_handling]
+  - id: adverse_event_escalation_miss
+    kind: compliance_risk
+    default_severity: critical
+    related_subskills: [closing_followup]
+    summary: The rep misses or mishandles required adverse event follow-up and escalation behavior.
+    recommendation_focus: [closing_followup]

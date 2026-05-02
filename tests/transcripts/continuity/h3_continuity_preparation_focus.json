@@ -1,0 +1,65 @@
+{
+  "name": "h3_continuity_preparation_focus",
+  "finish_reason": "max_turns_reached",
+  "scenario_focus_subskills": [
+    "preparation",
+    "opening",
+    "scientific_delivery"
+  ],
+  "turns": [
+    {
+      "user_message": "I planned to be concise but started without a clear structure.",
+      "director_events": [
+        "poor_time_management"
+      ]
+    },
+    {
+      "user_message": "Let me reset: one endpoint, one safety point, one patient segment.",
+      "director_events": []
+    },
+    {
+      "user_message": "I still need more time to complete the close.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 77,
+    "overall_score_max": 81,
+    "overall_band_one_of": [
+      "strong"
+    ],
+    "required_diagnosis_ids": [],
+    "forbidden_diagnosis_ids": [],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_rule_ids": [],
+    "required_compliance_severities": [],
+    "forbidden_compliance_severities": []
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "new_product_adoption_barrier",
+      "cautious_doctor_evidence_check"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "h3",
+      "continuity",
+      "preparation",
+      "max_turns"
+    ]
+  },
+  "continuity_context": {
+    "carryover_focus_subskills": [
+      "preparation"
+    ],
+    "suggested_focus_subskills": [
+      "preparation",
+      "scientific_delivery"
+    ],
+    "next_actions": [
+      "Open with a pre-structured one-endpoint one-safety one-segment frame.",
+      "Connect evidence to a concrete use case."
+    ]
+  }
+}

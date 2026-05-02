@@ -1,0 +1,43 @@
+{
+  "name": "compliance_ae_failure",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "profiling",
+    "closing_followup"
+  ],
+  "turns": [
+    {
+      "user_message": "Good morning Doctor. How are you today?",
+      "director_events": []
+    },
+    {
+      "user_message": "I see. You mentioned a side effect? Don't worry, that's just a mild reaction. It will go away in a few days. Let's talk about the efficacy of the drug instead.",
+      "director_events": []
+    }
+  ],
+  "expected": {
+    "overall_score_min": 10,
+    "overall_score_max": 40,
+    "overall_band_one_of": [
+      "critical_gap"
+    ],
+    "required_compliance_rule_ids": [
+      "adverse_event_reporting_failure"
+    ],
+    "required_compliance_severities": [
+      "critical"
+    ]
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "adverse_event_followup_required"
+    ],
+    "compliance_case": "adverse_event_failure",
+    "tags": [
+      "adverse_event",
+      "legacy_fixture",
+      "noncompliant"
+    ]
+  }
+}

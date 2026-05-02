@@ -1,0 +1,67 @@
+{
+  "name": "evidence_dump_without_linkage",
+  "finish_reason": "manual_finish",
+  "scenario_focus_subskills": [
+    "scientific_delivery",
+    "objection_handling"
+  ],
+  "turns": [
+    {
+      "user_message": "Study A, study B, and study C all show endpoints, subgroup tables, and detailed numbers.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "The evidence keeps going with more tables, confidence intervals, and secondary analyses.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "Another evidence package adds more data without linking it to the doctor decision.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    },
+    {
+      "user_message": "I can continue listing study details instead of connecting the evidence to relevance.",
+      "director_events": [
+        "evidence_not_addressed"
+      ]
+    }
+  ],
+  "expected": {
+    "overall_score_min": 65,
+    "overall_score_max": 72,
+    "overall_band_one_of": [
+      "functional"
+    ],
+    "required_compliance_rule_ids": [],
+    "forbidden_compliance_severities": [
+      "high",
+      "critical"
+    ],
+    "required_diagnosis_ids": [
+      "objection_response_gap",
+      "unclear_scientific_delivery"
+    ],
+    "required_subskill_score_max": {
+      "scientific_delivery": 2,
+      "objection_handling": 2
+    }
+  },
+  "metadata": {
+    "schema_version": 1,
+    "scenario_ids": [
+      "cautious_doctor_evidence_check",
+      "new_product_adoption_barrier"
+    ],
+    "compliance_case": "none",
+    "tags": [
+      "evidence_dump",
+      "scientific_delivery_gap",
+      "no_need_linkage"
+    ]
+  }
+}
